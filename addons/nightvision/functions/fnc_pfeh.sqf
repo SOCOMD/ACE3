@@ -78,6 +78,7 @@ if (CBA_missionTime < GVAR(nextEffectsUpdate)) then {
     GVAR(nextEffectsUpdate) = CBA_missionTime + 5;
 
     // Detecting the efficiency of the nightvision.
+    
     private _lightFinal = 0 max (moonIntensity - ((overcast * .8) min .275) - (rain * .5));
     private _effectiveLight = _lightFinal * linearConversion [1, 3, GVAR(nvgGeneration), 0.25, 1];
     private _effectMod = linearConversion [1, 3, GVAR(nvgGeneration), 1.5, 1];
@@ -140,7 +141,7 @@ if (CBA_missionTime < GVAR(nextEffectsUpdate)) then {
     // ColorCorrections - Changes brightness, contrast and "green" color of nvg
     // Params: [brightness(0..2), contrast(0..inf), offset(-x..+x), blendArray, colorizeArray, weightArray]
     GVAR(ppeffectColorCorrect) = ppEffectCreate ["ColorCorrections", 2003];
-    GVAR(ppeffectColorCorrect) ppEffectAdjust [_brightFinal, _contrastFinal, 0, [0.0, 0.0, 0.0, 0.0], [1.3, 1.2, 0.0, 0.9], [6, 1, 1, 0.0]];
+    GVAR(ppeffectColorCorrect) ppEffectAdjust [_brightFinal, _contrastFinal, GVAR(nvgOffset), GVAR(nvgBlend), GVAR(nvgColorize), GVAR(nvgWeight)];
     GVAR(ppeffectColorCorrect) ppEffectCommit 0;
     GVAR(ppeffectColorCorrect) ppEffectForceInNVG true;
     GVAR(ppeffectColorCorrect) ppEffectEnable true;
