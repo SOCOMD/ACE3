@@ -200,11 +200,12 @@ GVAR(currentLeftPanel) = _ctrlIDC;
 [_sortLeftCtrl] call FUNC(sortPanel);
 
 //Select current item
+
+private _itemsToCheck = ((GVAR(currentItems) select [0,15]) + [GVAR(currentFace), GVAR(currentVoice), GVAR(currentInsignia)]) apply {tolower _x};
 _grenade = GVAR(center) getVariable  ["ace_socomd_arseal_grenade", ""];
 _extra = GVAR(center) getVariable  ["ace_socomd_arseal_extras", ""];
-_nvg = GVAR(center) getVariable  ["ace_socomd_arseal_nvg", ""];
-private _itemsToCheck = ((GVAR(currentItems) select [0,15]) + [GVAR(currentFace), GVAR(currentVoice), GVAR(currentInsignia),_grenade,_extra,_nvg]) apply {tolower _x};
-
+_varOptions = [_grenade, _extra];
+_itemsToCheck append _varOptions;
 for "_lbIndex" from 0 to (lbSize _ctrlPanel - 1) do {
     private _currentData = _ctrlPanel lbData _lbIndex;
     

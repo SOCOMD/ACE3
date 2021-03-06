@@ -285,7 +285,6 @@ switch (GVAR(currentLeftPanel)) do {
         [_display, _control, _curSel, (configFile >> "CfgGlasses" >> _item)] call FUNC(itemInfo);
     };
 
-    
     case IDC_buttonNVG : {
          GVAR(center) setVariable  ["ace_socomd_arseal_nvg", _item];
         _nvgArray = ["SOCOMD_NVG","SOCOMD_NVG_GR","SOCOMD_NVG_GPNVG_WP_black","SOCOMD_NVG_GPNVG_GR_black"];
@@ -344,6 +343,7 @@ switch (GVAR(currentLeftPanel)) do {
         TOGGLE_RIGHT_PANEL_HIDE
         [_display, _control, _curSel, (configFile >> "CfgWeapons" >> _item)] call FUNC(itemInfo);
     };
+
     case IDC_buttonGrenadeLoadout : {
         if (_item != "") then {
             [GVAR(center)] call FUNC(removeGrenades);

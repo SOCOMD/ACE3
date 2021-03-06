@@ -40,7 +40,6 @@ if (GVAR(currentLoadoutsTab) != IDC_buttonSharedLoadouts) then {
         _x params ["_loadoutName", "_loadoutData"];
 
         private _loadoutCachedInfo = _contentPanelCtrl getVariable (_loadoutName + str GVAR(currentLoadoutsTab)); 
-
         if (isNil "_loadoutCachedInfo") then {
             [_loadoutData] call FUNC(verifyLoadout)
         } else {

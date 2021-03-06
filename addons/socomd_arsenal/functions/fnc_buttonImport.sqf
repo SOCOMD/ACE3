@@ -55,7 +55,10 @@ if (GVAR(shiftState) && {is3DEN}) then {
                 case 5;
                 case 6;
                 case 7;
-                case 8;
+                case 8 {
+                    GVAR(currentItems) set [_index, (LIST_DEFAULTS select _index) select 0];
+
+                };
                 case 9: {
                     GVAR(currentItems) set [_index, (LIST_DEFAULTS select _index) select 0];
 

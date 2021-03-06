@@ -33,6 +33,10 @@ private _loadout = switch GVAR(currentLoadoutsTab) do {
         (GVAR(sharedLoadoutsNamespace) getVariable ((_contentPanelCtrl lnbText [_curSel, 0]) + (_contentPanelCtrl lnbText [_curSel, 1]))) select 2
     };
 };
+// replace saved uniform with current one 
+_uniformLoadout = _loadout select 3;
+_uniformLoadout set [0, uniform GVAR(center)]; 
+_loadout set [3, _uniformLoadout];
 
 GVAR(center) setUnitLoadout [_loadout, true];
 

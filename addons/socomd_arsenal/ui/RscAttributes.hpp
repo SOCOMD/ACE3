@@ -673,9 +673,9 @@ class GVAR(socomd_display) {
                     y = QUOTE(90 * GRID_H);
                 };
                 class buttonBinoculars: buttonPrimaryWeapon {
-                    idc = IDC_buttonBinoculars;
-                    tooltip="$STR_A3_RscDisplayArsenal_tab_Binoculars";
-                    text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Binoculars_ca.paa";
+                    idc = IDC_buttonGrenadeLoadout;
+                    tooltip="Grenade Options";
+                    text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoThrow_ca.paa";
                     y = QUOTE(90 * GRID_H);
                 };
                 class iconBackgroundMap: IconBackgroundPrimaryWeapon {
@@ -684,8 +684,8 @@ class GVAR(socomd_display) {
                 };
                 class buttonMap: buttonPrimaryWeapon {
                     idc = IDC_buttonMap;
-                    tooltip="$STR_A3_RscDisplayArsenal_tab_Map";
-                    text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Map_ca.paa";
+                    tooltip="Extras";
+                    text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoMag_ca.paa";
                     y = QUOTE(100 * GRID_H);
                 };
                 class iconBackgroundGPS: IconBackgroundPrimaryWeapon {

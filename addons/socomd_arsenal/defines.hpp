@@ -63,7 +63,7 @@
 #define IDC_iconBackgroundNVG 2017
 #define IDC_buttonNVG 2018
 #define IDC_iconBackgroundBinoculars 2019
-#define IDC_buttonBinoculars 2020
+#define IDC_buttonGrenadeLoadout 2020
 #define IDC_iconBackgroundMap 2021
 #define IDC_buttonMap 2022
 #define IDC_iconBackgroundGPS 2023

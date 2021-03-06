@@ -24,7 +24,7 @@ private _editBoxContent = ctrlText _editBoxCtrl;
 if (_editBoxContent == "") exitWith {
     [(findDisplay IDD_ace_arsenal), localize LSTRING(saveEmptyNameBox)] call FUNC(message);
 };
-_loadoutId = player getVariable ["SOCOMD_LOADOUTID", ""];
+_loadoutId = GVAR(center) getVariable ["SOCOMD_LOADOUTID", ""];
 private _data = [+(profileNamespace getVariable [format ["ace_socomd_arsenal_%1_saved_loudout",_loadoutId],[]]), +(GVAR(defaultLoadoutsList))] select (GVAR(currentLoadoutsTab) == IDC_buttonDefaultLoadouts && {is3DEN});
 private _contentPanelCtrl = _display displayCtrl IDC_contentPanel;
 private _cursSelRow = lnbCurSelRow _contentPanelCtrl;
