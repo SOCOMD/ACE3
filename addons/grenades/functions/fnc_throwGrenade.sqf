@@ -60,7 +60,7 @@ if (local _unit) then {
         for "_i" from 0 to (_bangs - 1) do {
             private _fuzeTime = _fuzeTimeBase + _i*_interval + random [- _maxDeviation, 0, _maxDeviation];
 
-            [FUNC(flashbangThrownFuze), [_projectile], _fuzeTime] call CBA_fnc_waitAndExecute;
+            [FUNC(flashbangThrownFuze), [_projectile,_i], _fuzeTime] call CBA_fnc_waitAndExecute;
         };
     };
 };

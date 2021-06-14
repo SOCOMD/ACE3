@@ -3,3 +3,4 @@ PREP(handleInfoDisplayChanged);
 PREP(handleReserve);
 PREP(hideAltimeter);
 PREP(showAltimeter);
+PREP(swapAltType);

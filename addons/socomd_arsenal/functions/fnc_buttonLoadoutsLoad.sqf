@@ -80,7 +80,10 @@ for "_index" from 0 to 15 do {
 };
 {
     private _simulationType = getText (configFile >> "CfgWeapons" >> _x >> "simulation");
-
+    private _ctabItems = ["ItemAndroid", "ItemMicroDAGR", "ItemcTab"];
+    if (_x in _ctabItems) then {
+        (GVAR(currentItems) select 16) pushBack _x;
+    };
     if (_simulationType != "NVGoggles") then {
         if (_simulationType == "ItemGps" || _simulationType == "Weapon") then {
             GVAR(currentItems) set [14, _x];

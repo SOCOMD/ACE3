@@ -60,35 +60,68 @@ if (alive ACE_player) then {
             for "_index" from 0 to (count _turretConfigOpticsIn - 1) do {
                 if ("NVG" in getArray (_turretConfigOpticsIn select _index >> "visionMode")) exitWith {_result = false};
             };
-        } else {
-            // No OpticsIn usualy means RCWS, still need to test on more vehicles
-            _result = false;
         };
         _result
     }) then {
+        // // if player is in a vehicle
+        private _canUseWeapon = [ACE_player] call CBA_fnc_canUseWeapon;
+        if(((vehicle ACE_player) != ACE_player) && (cameraView == "GUNNER") && (!_canUseWeapon)) exitWith { // check if they're in a vehicle turret and not in a FFV seat
+            TRACE_1("souce: vehicle Weapon", vehicle ACE_player); 
+            private _currentVehicle = vehicle ACE_player;
+            private _vehConfig = configOf _currentVehicle;
+
+
+            private _result = true;
+            private _turret = ACE_player call CBA_fnc_turretPath;
+            private _turretConfig = [_currentVehicle, _turret] call CBA_fnc_getTurret;
+
+            // Seems to cover things like the offroad technical
+            if((ACE_player != (driver _currentVehicle)) && (isArray (_turretConfig >> "ViewOptics" >> "visionMode")) && ("NVG" in getArray (_turretConfig >> "ViewOptics" >> "visionMode"))) then {
+                if (isNumber (_turretConfig >> "ViewOptics" >> QGVAR(generation))) then {_nvgGen = getNumber (_turretConfig >> "ViewOptics" >> QGVAR(generation));};
+                // Gets proper Params' Array from CfgWeapons
+                if (isArray (_turretConfig >> "ViewOptics" >> "colorPreset")) then {_preset = getArray (_turretConfig >> "ViewOptics" >> "colorPreset");};
+            } else {
+                // else is just using HMD
+                TRACE_1("source: hmd",GVAR(playerHMD)); // Source is player's HMD (or possibly a NVG scope, but no good way to detect that)
+                private _config = configFile >> "CfgWeapons" >> GVAR(playerHMD);
+                if (!isClass _config) exitWith {};
+
+                // Only use border if there is no modelOptics
+                if ((getText (_config >> "modelOptics")) == "") then {
+                    _borderImage = getText (_config >> QGVAR(border));
+                    _eyeCups = ((getNumber (_config >> QGVAR(eyeCups))) == 1);
+                    _hideHex = (getNumber (_config >> QGVAR(hideHex))) == 1;
+                    if (isNumber (_config >> QGVAR(bluRadius))) then {_blurRadius = getNumber (_config >> QGVAR(bluRadius));};
+                };
+                if (isNumber (_config >> QGVAR(generation))) then {_nvgGen = getNumber (_config >> QGVAR(generation));};
+                // Same as at line 72
+                if (isArray (_config >> "colorPreset")) then {_preset = getArray (_config >> "colorPreset");};
+            };
+        };
+        // else is using a NVG optic/weapon
         if ((cameraView == "GUNNER") && {currentWeapon ACE_player != ""} && {binocular ACE_player == currentWeapon ACE_player}) exitWith {
             TRACE_1("souce: binocular",binocular ACE_player); // Source is from player's binocular (Rangefinder/Vector21bNite)
             private _config = configFile >> "CfgWeapons" >> (binocular ACE_player);
             if (isNumber (_config >> QGVAR(generation))) then {_nvgGen = getNumber (_config >> QGVAR(generation));};
             // Gets proper Params' Array from CfgWeapons
             if (isArray (_config >> "colorPreset")) then {_preset = getArray (_config >> "colorPreset");};
+       } else {
+            // else is just using HMD
+            TRACE_1("source: hmd",GVAR(playerHMD)); // Source is player's HMD (or possibly a NVG scope, but no good way to detect that)
+            private _config = configFile >> "CfgWeapons" >> GVAR(playerHMD);
+            if (!isClass _config) exitWith {};
+
+            // Only use border if there is no modelOptics
+            if ((getText (_config >> "modelOptics")) == "") then {
+                _borderImage = getText (_config >> QGVAR(border));
+                _eyeCups = ((getNumber (_config >> QGVAR(eyeCups))) == 1);
+                _hideHex = (getNumber (_config >> QGVAR(hideHex))) == 1;
+                if (isNumber (_config >> QGVAR(bluRadius))) then {_blurRadius = getNumber (_config >> QGVAR(bluRadius));};
+            };
+            if (isNumber (_config >> QGVAR(generation))) then {_nvgGen = getNumber (_config >> QGVAR(generation));};
+            // Same as at line 72
+            if (isArray (_config >> "colorPreset")) then {_preset = getArray (_config >> "colorPreset");};
         };
-
-        TRACE_1("source: hmd",GVAR(playerHMD)); // Source is player's HMD (or possibly a NVG scope, but no good way to detect that)
-        private _config = configFile >> "CfgWeapons" >> GVAR(playerHMD);
-        if (!isClass _config) exitWith {};
-
-        // Only use border if there is no modelOptics
-        if ((getText (_config >> "modelOptics")) == "") then {
-            _borderImage = getText (_config >> QGVAR(border));
-            _eyeCups = ((getNumber (_config >> QGVAR(eyeCups))) == 1);
-            _hideHex = (getNumber (_config >> QGVAR(hideHex))) == 1;
-            if (isNumber (_config >> QGVAR(bluRadius))) then {_blurRadius = getNumber (_config >> QGVAR(bluRadius));};
-        };
-        if (isNumber (_config >> QGVAR(generation))) then {_nvgGen = getNumber (_config >> QGVAR(generation));};
-        // Same as at line 72
-        if (isArray (_config >> "colorPreset")) then {_preset = getArray (_config >> "colorPreset");};
-
     } else {
         TRACE_1("source: vehicle - defaults",typeOf vehicle ACE_player);
     };
