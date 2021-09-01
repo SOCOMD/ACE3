@@ -33,11 +33,24 @@ private _loadout = switch GVAR(currentLoadoutsTab) do {
         (GVAR(sharedLoadoutsNamespace) getVariable ((_contentPanelCtrl lnbText [_curSel, 0]) + (_contentPanelCtrl lnbText [_curSel, 1]))) select 2
     };
 };
-// replace saved uniform with current one 
+// replace saved uniform with current one if not 
 _uniformLoadout = _loadout select 3;
-_uniformLoadout set [0, uniform GVAR(center)]; 
-_loadout set [3, _uniformLoadout];
-
+_accessories = _loadout select 9;
+_item = _uniformLoadout select 0;
+_selectedUniform = (_uniformLoadout select 0) splitString "_"; 
+if(!(CHECK_CONTAINER) && ((_selectedUniform select 0) != "USP")) then { 
+    _uniformLoadout set [0, uniform GVAR(center)]; 
+    _loadout set [3, _uniformLoadout];
+};
+// update ctab items with inventory if they're not already
+_ctabItems = ["ItemAndroid","ItemcTab","ItemMicroDAGR"];
+_gps = _accessories select 1;
+if(_gps in _ctabItems) then {
+    _accessories set [1,""];
+    _items = _uniformLoadout select 1;
+    _items pushBack [_gps,1];
+    _uniformLoadout set [1,_items];
+};
 GVAR(center) setUnitLoadout [_loadout, true];
 
 GVAR(currentItems) = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", [], [], [], [], [], []];
@@ -80,10 +93,7 @@ for "_index" from 0 to 15 do {
 };
 {
     private _simulationType = getText (configFile >> "CfgWeapons" >> _x >> "simulation");
-    private _ctabItems = ["ItemAndroid", "ItemMicroDAGR", "ItemcTab"];
-    if (_x in _ctabItems) then {
-        (GVAR(currentItems) select 16) pushBack _x;
-    };
+
     if (_simulationType != "NVGoggles") then {
         if (_simulationType == "ItemGps" || _simulationType == "Weapon") then {
             GVAR(currentItems) set [14, _x];

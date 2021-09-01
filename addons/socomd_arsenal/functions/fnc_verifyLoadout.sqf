@@ -19,8 +19,8 @@ private _weaponCfg = configFile >> "CfgWeapons";
 private _magCfg = configFile >> "CfgMagazines";
 private _vehcCfg = configFile >> "CfgVehicles";
 private _glassesCfg = configFile >> "CfgGlasses";
-private _weaponsArray = GVAR(virtualItems) select 0;
-private _accsArray = GVAR(virtualItems) select 1;
+private _weaponsArray = GVAR(virtualItems) select IDX_VIRT_WEAPONS;
+private _accsArray = GVAR(virtualItems) select IDX_VIRT_ATTACHEMENTS;
 
 private _nullItemsAmount = 0;
 private _unavailableItemsAmount = 0;
@@ -58,7 +58,7 @@ private _fnc_weaponCheck = {
                     private _mag = _x select 0;
 
                     if (isClass (_magCfg >> _mag)) then {
-                        if !(_mag in (GVAR(virtualItems) select 2)) then {
+                        if !(_mag in (GVAR(virtualItems) select IDX_VIRT_ITEMS_ALL)) then {
 
                             _unavailableItemsList pushBackUnique _mag;
                             _dataPath set [_forEachIndex, []];
@@ -85,142 +85,7 @@ for "_dataIndex" from 0 to 9 do {
             [_loadout select _dataIndex] call _fnc_weaponCheck;
         };
 
-        case 3: {
-            private _containerArray = (_loadout select _dataIndex);
-            private _worldType = worldName call SOCOMD_fnc_GetWorldType;
-            private _aridUniforms = getArray (configFile >> "CfgArsenalOptions" >> "uniforms" >> "arid_uniforms"); 
-            private _temperateUniforms = getArray (configFile >> "CfgArsenalOptions" >> "uniforms" >> "temperate_uniforms"); 
-            
-            if (count _containerArray != 0) then {
-
-                _containerArray params ["_item", "_containerItems"]; 
-                if (isClass (_vehcCfg >> _item) || {isClass (_weaponCfg >> _item)}) then {
-                    if !(CHECK_CONTAINER) then {
-                        if((_worldType == 'Arid' && !(_item in _temperateUniforms)) or (_worldType =="Woodland" && !(_item in _aridUniforms))) then {
-                        _unavailableItemsList pushBackUnique _item;
-                        _loadout set [_dataIndex, []];
-                        _unavailableItemsAmount = _unavailableItemsAmount + 1;
-                        } else {
-                        if (count _containerItems != 0) then {
-                            {
-                                private _currentIndex = _forEachIndex;
-
-                                switch (count _x) do {
-                                    case 2: {
-
-                                        if ((_x select 0) isEqualType "") then {
-
-                                            private _item = _x select 0;
-
-                                            if (CLASS_CHECK_ITEM) then {
-                                                if !(CHECK_CONTAINER_ITEMS) then {
-
-                                                    _unavailableItemsList pushBackUnique _item;
-                                                    ((_loadout select _dataIndex) select 1) set [_currentIndex, []];
-                                                    _unavailableItemsAmount = _unavailableItemsAmount + 1;
-                                                };
-                                            } else {
-
-                                                _nullItemsList pushBackUnique _item;
-                                                ((_loadout select _dataIndex) select 1) set [_currentIndex, []];
-                                                _nullItemsAmount = _nullItemsAmount + 1;
-                                            };
-                                        } else {
-
-                                            [(((_loadout select _dataIndex) select 1) select _currentIndex) select 0] call _fnc_weaponCheck;
-                                        };
-                                    };
-
-                                    case 3: {
-                                        private _item = _x select 0;
-
-                                        if (isClass (_magCfg >> _item)) then {
-                                            if !(
-                                                    _item in (GVAR(virtualItems) select 2) ||
-                                                    _item in (GVAR(virtualItems) select 15) ||
-                                                    _item in (GVAR(virtualItems) select 16)
-                                                ) then {
-
-                                                _unavailableItemsList pushBackUnique _item;
-                                                ((_loadout select _dataIndex) select 1) set [_currentIndex, []];
-                                                _unavailableItemsAmount = _unavailableItemsAmount + 1;
-                                            };
-                                        } else {
-
-                                            _nullItemsList pushBackUnique _item;
-                                            ((_loadout select _dataIndex) select 1) set [_currentIndex, []];
-                                            _nullItemsAmount = _nullItemsAmount + 1;
-                                        };
-                                    };
-                                };
-                            } foreach _containerItems;
-                        };
-                        };
-                    } else {
-
-                        if (count _containerItems != 0) then {
-                            {
-                                private _currentIndex = _forEachIndex;
-
-                                switch (count _x) do {
-                                    case 2: {
-
-                                        if ((_x select 0) isEqualType "") then {
-
-                                            private _item = _x select 0;
-
-                                            if (CLASS_CHECK_ITEM) then {
-                                                if !(CHECK_CONTAINER_ITEMS) then {
-
-                                                    _unavailableItemsList pushBackUnique _item;
-                                                    ((_loadout select _dataIndex) select 1) set [_currentIndex, []];
-                                                    _unavailableItemsAmount = _unavailableItemsAmount + 1;
-                                                };
-                                            } else {
-
-                                                _nullItemsList pushBackUnique _item;
-                                                ((_loadout select _dataIndex) select 1) set [_currentIndex, []];
-                                                _nullItemsAmount = _nullItemsAmount + 1;
-                                            };
-                                        } else {
-
-                                            [(((_loadout select _dataIndex) select 1) select _currentIndex) select 0] call _fnc_weaponCheck;
-                                        };
-                                    };
-
-                                    case 3: {
-                                        private _item = _x select 0;
-
-                                        if (isClass (_magCfg >> _item)) then {
-                                            if !(
-                                                    _item in (GVAR(virtualItems) select 2) ||
-                                                    _item in (GVAR(virtualItems) select 15) ||
-                                                    _item in (GVAR(virtualItems) select 16)
-                                                ) then {
-
-                                                _unavailableItemsList pushBackUnique _item;
-                                                ((_loadout select _dataIndex) select 1) set [_currentIndex, []];
-                                                _unavailableItemsAmount = _unavailableItemsAmount + 1;
-                                            };
-                                        } else {
-
-                                            _nullItemsList pushBackUnique _item;
-                                            ((_loadout select _dataIndex) select 1) set [_currentIndex, []];
-                                            _nullItemsAmount = _nullItemsAmount + 1;
-                                        };
-                                    };
-                                };
-                            } foreach _containerItems;
-                        };
-                    };
-                } else {
-
-                    _nullItemsList pushBackUnique _item;
-                    _loadout set [_dataIndex, []];
-                    _nullItemsAmount = _nullItemsAmount + 1;
-                };
-            };
-        };
+        case 3;
         case 4;
         case 5: {
             private _containerArray = (_loadout select _dataIndex);
@@ -230,7 +95,7 @@ for "_dataIndex" from 0 to 9 do {
                 _containerArray params ["_item", "_containerItems"];
 
                 if (isClass (_vehcCfg >> _item) || {isClass (_weaponCfg >> _item)}) then {
-                    if !(CHECK_CONTAINER) then {
+                    if ( _dataIndex != 3 && !(CHECK_CONTAINER)) then {
 
                         _unavailableItemsList pushBackUnique _item;
                         _loadout set [_dataIndex, []];
@@ -272,7 +137,7 @@ for "_dataIndex" from 0 to 9 do {
 
                                         if (isClass (_magCfg >> _item)) then {
                                             if !(
-                                                    _item in (GVAR(virtualItems) select 2) ||
+                                                    _item in (GVAR(virtualItems) select IDX_VIRT_ITEMS_ALL) ||
                                                     _item in (GVAR(virtualItems) select 15) ||
                                                     _item in (GVAR(virtualItems) select 16)
                                                 ) then {
@@ -308,7 +173,7 @@ for "_dataIndex" from 0 to 9 do {
 
                 if (isClass (_weaponCfg >> _item)) then {
 
-                    if !(_item in (GVAR(virtualItems) select 3)) then {
+                    if !(_item in (GVAR(virtualItems) select IDX_VIRT_HEADGEAR)) then {
 
                         _unavailableItemsList pushBackUnique _item;
                         _loadout set [_dataIndex, ""];
@@ -330,7 +195,7 @@ for "_dataIndex" from 0 to 9 do {
 
                 if (isClass (_glassesCfg >> _item)) then {
 
-                    if !(_item in (GVAR(virtualItems) select 7)) then {
+                    if !(_item in (GVAR(virtualItems) select IDX_VIRT_GOGGLES)) then {
 
                         _unavailableItemsList pushBackUnique _item;
                         _loadout set [_dataIndex, ""];

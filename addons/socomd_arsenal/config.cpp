@@ -1,29 +1,19 @@
-////////////////////////////////////////////////////////////////////
-//DeRap: ace_socomd_arsenal\config.bin
-//Produced from mikero's Dos Tools Dll version 7.46
-//https://bytex.market/products/item/weodpphdknnzm70o0h8q/Mikero%27s%20Dos%20Tools
-//'now' is Sun Feb 28 17:51:48 2021 : 'file' last modified on Sun Feb 21 19:05:11 2021
-////////////////////////////////////////////////////////////////////
+#include "script_component.hpp"
 
-#define _ARMA_
-
-class CfgPatches
-{
-	class ace_socomd_arsenal
-	{
-		name = "ACE3 - Socomd Arsenal";
-		units[] = {};
-		weapons[] = {};
-		requiredVersion = 1.98;
-		requiredAddons[] = {"ace_common","A3_Ui_F_Data","A3_3DEN","A3_Ui_F_Curator"};
-		author = "$STR_ace_common_ACETeam";
-		authors[] = {"alganthe","mharis001","SynixeBrett"};
-		url = "$STR_ace_main_URL";
-		version = 3.13;
-		versionStr = "3.13";
-		versionAr[] = {3,13,4,54};
-	};
+class CfgPatches {
+    class ADDON {
+        name = COMPONENT_NAME;
+        units[] = {};
+        weapons[] = {};
+        requiredVersion = REQUIRED_VERSION;
+        requiredAddons[] = {"ace_common"};
+        author = ECSTRING(common,ACETeam);
+        authors[] = {"alganthe", "mharis001", "SynixeBrett"};
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
+    };
 };
+
 class ScrollBar;
 class RscObject;
 class RscText;
@@ -976,89 +966,89 @@ class ace_socomd_arsenal_socomd_display
 					text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\CargoMag_ca.paa";
 					y = "100 * (pixelH * pixelGridNoUIScale * 0.25)";
 				};
-				class iconBackgroundGPS: IconBackgroundPrimaryWeapon
-				{
-					idc = 2023;
-					y = "110 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class buttonGPS: buttonPrimaryWeapon
-				{
-					idc = 2024;
-					tooltip = "$STR_A3_RscDisplayArsenal_tab_GPS";
-					text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\GPS_ca.paa";
-					y = "110 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class iconBackgroundRadio: IconBackgroundPrimaryWeapon
-				{
-					idc = 2025;
-					y = "120 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class buttonRadio: buttonPrimaryWeapon
-				{
-					idc = 2026;
-					tooltip = "$STR_A3_RscDisplayArsenal_tab_Radio";
-					text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Radio_ca.paa";
-					y = "120 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class iconBackgroundCompass: IconBackgroundPrimaryWeapon
-				{
-					idc = 2028;
-					y = "130 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class buttonCompass: buttonPrimaryWeapon
-				{
-					idc = 2029;
-					tooltip = "$STR_A3_RscDisplayArsenal_tab_Compass";
-					text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Compass_ca.paa";
-					y = "130 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class iconBackgroundWatch: IconBackgroundPrimaryWeapon
-				{
-					idc = 2030;
-					y = "140 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class buttonWatch: buttonPrimaryWeapon
-				{
-					idc = 2031;
-					tooltip = "$STR_A3_RscDisplayArsenal_tab_Watch";
-					text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa";
-					y = "140 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class iconBackgroundFace: IconBackgroundPrimaryWeapon
-				{
-					idc = 2032;
-					y = "150 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class buttonFace: buttonPrimaryWeapon
-				{
-					idc = 2033;
-					tooltip = "$STR_A3_RscDisplayArsenal_tab_Face";
-					text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Face_ca.paa";
-					y = "150 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class iconBackgroundVoice: IconBackgroundPrimaryWeapon
-				{
-					idc = 2034;
-					y = "160 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
-				class buttonVoice: buttonPrimaryWeapon
-				{
-					idc = 2035;
-					tooltip = "$STR_A3_RscDisplayArsenal_tab_Voice";
-					text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Voice_ca.paa";
-					y = "160 * (pixelH * pixelGridNoUIScale * 0.25)";
-				};
+				// class iconBackgroundGPS: IconBackgroundPrimaryWeapon
+				// {
+				// 	idc = 2023;
+				// 	y = "110 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class buttonGPS: buttonPrimaryWeapon
+				// {
+				// 	idc = 2024;
+				// 	tooltip = "$STR_A3_RscDisplayArsenal_tab_GPS";
+				// 	text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\GPS_ca.paa";
+				// 	y = "110 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class iconBackgroundRadio: IconBackgroundPrimaryWeapon
+				// {
+				// 	idc = 2025;
+				// 	y = "120 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class buttonRadio: buttonPrimaryWeapon
+				// {
+				// 	idc = 2026;
+				// 	tooltip = "$STR_A3_RscDisplayArsenal_tab_Radio";
+				// 	text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Radio_ca.paa";
+				// 	y = "120 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class iconBackgroundCompass: IconBackgroundPrimaryWeapon
+				// {
+				// 	idc = 2028;
+				// 	y = "130 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class buttonCompass: buttonPrimaryWeapon
+				// {
+				// 	idc = 2029;
+				// 	tooltip = "$STR_A3_RscDisplayArsenal_tab_Compass";
+				// 	text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Compass_ca.paa";
+				// 	y = "130 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class iconBackgroundWatch: IconBackgroundPrimaryWeapon
+				// {
+				// 	idc = 2030;
+				// 	y = "140 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class buttonWatch: buttonPrimaryWeapon
+				// {
+				// 	idc = 2031;
+				// 	tooltip = "$STR_A3_RscDisplayArsenal_tab_Watch";
+				// 	text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa";
+				// 	y = "140 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class iconBackgroundFace: IconBackgroundPrimaryWeapon
+				// {
+				// 	idc = 2032;
+				// 	y = "150 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class buttonFace: buttonPrimaryWeapon
+				// {
+				// 	idc = 2033;
+				// 	tooltip = "$STR_A3_RscDisplayArsenal_tab_Face";
+				// 	text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Face_ca.paa";
+				// 	y = "150 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class iconBackgroundVoice: IconBackgroundPrimaryWeapon
+				// {
+				// 	idc = 2034;
+				// 	y = "160 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
+				// class buttonVoice: buttonPrimaryWeapon
+				// {
+				// 	idc = 2035;
+				// 	tooltip = "$STR_A3_RscDisplayArsenal_tab_Voice";
+				// 	text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Voice_ca.paa";
+				// 	y = "160 * (pixelH * pixelGridNoUIScale * 0.25)";
+				// };
 				class iconBackgroundInsigna: IconBackgroundPrimaryWeapon
 				{
 					idc = 2036;
-					y = "170 * (pixelH * pixelGridNoUIScale * 0.25)";
+					y = "110 * (pixelH * pixelGridNoUIScale * 0.25)";
 				};
 				class buttonInsigna: buttonPrimaryWeapon
 				{
 					idc = 2037;
 					tooltip = "$STR_A3_RscDisplayArsenal_tab_Insignia";
 					text = "\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Insignia_ca.paa";
-					y = "170 * (pixelH * pixelGridNoUIScale * 0.25)";
+					y = "110 * (pixelH * pixelGridNoUIScale * 0.25)";
 				};
 			};
 		};

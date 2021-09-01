@@ -698,65 +698,65 @@ class GVAR(socomd_display) {
                     text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\GPS_ca.paa";
                     y = QUOTE(110 * GRID_H);
                 };
-                class iconBackgroundRadio: IconBackgroundPrimaryWeapon {
-                    idc = IDC_iconBackgroundRadio;
-                    y = QUOTE(120 * GRID_H);
-                };
-                class buttonRadio: buttonPrimaryWeapon {
-                    idc = IDC_buttonRadio;
-                    tooltip="$STR_A3_RscDisplayArsenal_tab_Radio";
-                    text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Radio_ca.paa";
-                    y = QUOTE(120 * GRID_H);
-                };
-                class iconBackgroundCompass: IconBackgroundPrimaryWeapon {
-                    idc = IDC_iconBackgroundCompass;
-                    y = QUOTE(130 * GRID_H);
-                };
-                class buttonCompass: buttonPrimaryWeapon {
-                    idc = IDC_buttonCompass;
-                    tooltip="$STR_A3_RscDisplayArsenal_tab_Compass";
-                    text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Compass_ca.paa";
-                    y = QUOTE(130 * GRID_H);
-                };
-                class iconBackgroundWatch: IconBackgroundPrimaryWeapon {
-                    idc = IDC_iconBackgroundWatch;
-                    y = QUOTE(140 * GRID_H);
-                };
-                class buttonWatch: buttonPrimaryWeapon {
-                    idc = IDC_buttonWatch;
-                    tooltip="$STR_A3_RscDisplayArsenal_tab_Watch";
-                    text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa";
-                    y = QUOTE(140 * GRID_H);
-                };
-                class iconBackgroundFace: IconBackgroundPrimaryWeapon {
-                    idc = IDC_iconBackgroundFace;
-                    y = QUOTE(150 * GRID_H);
-                };
-                class buttonFace: buttonPrimaryWeapon {
-                    idc = IDC_buttonFace;
-                    tooltip="$STR_A3_RscDisplayArsenal_tab_Face";
-                    text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Face_ca.paa";
-                    y = QUOTE(150 * GRID_H);
-                };
-                class iconBackgroundVoice: IconBackgroundPrimaryWeapon {
-                    idc = IDC_iconBackgroundVoice;
-                    y = QUOTE(160 * GRID_H);
-                };
-                class buttonVoice: buttonPrimaryWeapon {
-                    idc = IDC_buttonVoice;
-                    tooltip="$STR_A3_RscDisplayArsenal_tab_Voice";
-                    text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Voice_ca.paa";
-                    y = QUOTE(160 * GRID_H);
-                };
+                // class iconBackgroundRadio: IconBackgroundPrimaryWeapon {
+                //     idc = IDC_iconBackgroundRadio;
+                //     y = QUOTE(120 * GRID_H);
+                // };
+                // class buttonRadio: buttonPrimaryWeapon {
+                //     idc = IDC_buttonRadio;
+                //     tooltip="$STR_A3_RscDisplayArsenal_tab_Radio";
+                //     text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Radio_ca.paa";
+                //     y = QUOTE(120 * GRID_H);
+                // };
+                // class iconBackgroundCompass: IconBackgroundPrimaryWeapon {
+                //     idc = IDC_iconBackgroundCompass;
+                //     y = QUOTE(130 * GRID_H);
+                // };
+                // class buttonCompass: buttonPrimaryWeapon {
+                //     idc = IDC_buttonCompass;
+                //     tooltip="$STR_A3_RscDisplayArsenal_tab_Compass";
+                //     text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Compass_ca.paa";
+                //     y = QUOTE(130 * GRID_H);
+                // };
+                // class iconBackgroundWatch: IconBackgroundPrimaryWeapon {
+                //     idc = IDC_iconBackgroundWatch;
+                //     y = QUOTE(140 * GRID_H);
+                // };
+                // class buttonWatch: buttonPrimaryWeapon {
+                //     idc = IDC_buttonWatch;
+                //     tooltip="$STR_A3_RscDisplayArsenal_tab_Watch";
+                //     text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Watch_ca.paa";
+                //     y = QUOTE(140 * GRID_H);
+                // };
+                // class iconBackgroundFace: IconBackgroundPrimaryWeapon {
+                //     idc = IDC_iconBackgroundFace;
+                //     y = QUOTE(150 * GRID_H);
+                // };
+                // class buttonFace: buttonPrimaryWeapon {
+                //     idc = IDC_buttonFace;
+                //     tooltip="$STR_A3_RscDisplayArsenal_tab_Face";
+                //     text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Face_ca.paa";
+                //     y = QUOTE(150 * GRID_H);
+                // };
+                // class iconBackgroundVoice: IconBackgroundPrimaryWeapon {
+                //     idc = IDC_iconBackgroundVoice;
+                //     y = QUOTE(160 * GRID_H);
+                // };
+                // class buttonVoice: buttonPrimaryWeapon {
+                //     idc = IDC_buttonVoice;
+                //     tooltip="$STR_A3_RscDisplayArsenal_tab_Voice";
+                //     text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Voice_ca.paa";
+                //     y = QUOTE(160 * GRID_H);
+                // };
                 class iconBackgroundInsigna: IconBackgroundPrimaryWeapon {
                     idc = IDC_iconBackgroundInsigna;
-                    y = QUOTE(170 * GRID_H);
+                    y = QUOTE(120 * GRID_H);
                 };
                 class buttonInsigna: buttonPrimaryWeapon {
                     idc = IDC_buttonInsignia;
                     tooltip="$STR_A3_RscDisplayArsenal_tab_Insignia";
                     text="\A3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\Insignia_ca.paa";
-                    y = QUOTE(170 * GRID_H);
+                    y = QUOTE(120 * GRID_H);
                 };
             };
         };

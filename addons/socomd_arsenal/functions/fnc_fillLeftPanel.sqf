@@ -169,6 +169,8 @@ switch true do {
                 } foreach _voices;
             };
             case IDC_buttonInsignia : {
+                private _addEmpty = _ctrlPanel lbadd format [" <%1>",localize "str_empty"];
+                _ctrlPanel lbsetvalue [_addEmpty, -1];
                 {
                     ["CfgUnitInsignia", configName _x, _ctrlPanel, "texture"] call FUNC(addListBoxItem);
                 } foreach ("true" configClasses (configFile >> "CfgUnitInsignia"));
