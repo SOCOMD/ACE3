@@ -12,6 +12,7 @@ tools/temp
 *.pbo
 texHeaders.bin
 *.swp
+*.wss
 *.swo
 *.biprivatekey
 Thumbs.db

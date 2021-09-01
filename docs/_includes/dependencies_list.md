@@ -422,6 +422,10 @@
 `ace_common`
 {% endif %}
 
+{% if include.component == "socomd_arsenal" %}
+`ace_common`, `A3_Ui_F_Data`, `A3_3DEN`, `A3_Ui_F_Curator`
+{% endif %}
+
 {% if include.component == "spectator" %}
 `ace_common`
 {% endif %}
