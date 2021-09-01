@@ -43,10 +43,10 @@ if (_itemVehClass == "") exitWith {ERROR("no ACE_Attachable for Item");};
 private _onAttachText = format [localize LSTRING(Item_Attached), _onAttachText];
 
 
-private _itemUsedClass = getText (configFile >> "CfgWeapons" >> _itemName >> "ACE_ItemUsed");
+private _itemUsedClass = getText (configFile >> "CfgWeapons" >> _itemClassname >> "ACE_ItemUsed");
 
 if (_itemUsedClass == "") then {
-    _itemUsedClass = getText (configFile >> "CfgMagazines" >> _itemName >> "ACE_ItemUsed");
+    _itemUsedClass = getText (configFile >> "CfgMagazines" >> _itemClassname >> "ACE_ItemUsed");
 };
 
 if (_unit == _attachToVehicle) then {  //Self Attachment
@@ -54,10 +54,9 @@ if (_unit == _attachToVehicle) then {  //Self Attachment
     _attachedItem attachTo [_unit, _coords, _bone, true];
     if (!_silentScripted) then {
         if (_itemUsedClass != "") then {
-            _unit removeItem _itemUsedClass;  // Remove item
-        } else {
-            _unit removeItem _itemClassname;  // Remove item
+            _itemClassname = _itemUsedClass;
         };
+        _unit removeItem _itemClassname;
         [_onAttachText, 2] call EFUNC(common,displayTextStructured);
     };
     _unit setVariable [QGVAR(attached), [[_attachedItem, _itemClassname]], true];

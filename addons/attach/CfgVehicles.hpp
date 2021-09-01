@@ -121,7 +121,7 @@ class CfgVehicles {
             dayLight = 0;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.1, 1.1}; // 0.1 s on, 1.1 s off
+            blinkingPattern[] = {1,0.1};
         };
 
         side = 7;//-1=NO_SIDE yellow box,3=CIV grey box,4=NEUTRAL yellow box,6=FRIENDLY green box,7=LOGIC no radar signature
@@ -138,33 +138,33 @@ class CfgVehicles {
         brightness = 10;
     };
     class ACE_IR_Strobe_one_medium_Effect:ACE_IR_Strobe_one_Effect{
-        brightness = 5;
+        brightness = 6;
         class NVGMarker {
-            diffuse[]={0.003,0.003,0.003};
-            ambient[]={0.005,0.005,0.005};
-            brightness=0.2;
+            diffuse[]={0.015,0.015,0.015};
+            ambient[]={0.001,0.001,0.001};
+            brightness=0.1;
             name = "pozicni blik";
             activeLight = 1;
             blinking=1;
             dayLight = 1;
-            onlyInNvg = 0;
+            onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.1, 1.1}; // 0.1 s on, 1.1 s off
+            blinkingPattern[] = {1,0.1};
         };
     };
     class ACE_IR_Strobe_one_low_Effect:ACE_IR_Strobe_one_Effect{
         brightness = 2;
         class NVGMarker {
-            diffuse[]={0.0015,0.0015,0.0015};
-            ambient[]={0.0001,0.0001,0.0001};
-            brightness=0.1;
+            diffuse[]={0.015,0.015,0.015};
+            ambient[]={0.001,0.001,0.001};
+            brightness=0.05;
             name = "pozicni blik";
             activeLight = 0;
             blinking=1;
             dayLight = 0;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.1, 1.1}; // 0.1 s on, 1.1 s off
+            blinkingPattern[] = {1,0.1};
         };
     };
     
@@ -184,7 +184,7 @@ class CfgVehicles {
             dayLight = 0;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.1,0.1,1,0.1};
+            blinkingPattern[] = {1,0.1,0.1,0.1};
         };
 
         side = 7;//-1=NO_SIDE yellow box,3=CIV grey box,4=NEUTRAL yellow box,6=FRIENDLY green box,7=LOGIC no radar signature
@@ -201,33 +201,33 @@ class CfgVehicles {
         brightness = 10;
     };
     class ACE_IR_Strobe_two_medium_Effect:ACE_IR_Strobe_two_Effect{
-        brightness = 5;
+        brightness = 6;
         class NVGMarker {
-            diffuse[]={0.003,0.003,0.003};
-            ambient[]={0.005,0.005,0.005};
-            brightness=0.2;
+            diffuse[]={0.015,0.015,0.015};
+            ambient[]={0.001,0.001,0.001};
+            brightness=0.1;
             name = "pozicni blik";
             activeLight = 1;
             blinking=1;
             dayLight = 1;
-            onlyInNvg = 0;
+            onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.1,0.1,1,0.1};
+            blinkingPattern[] = {1,0.1,0.1,0.1};
         };
     };
     class ACE_IR_Strobe_two_low_Effect:ACE_IR_Strobe_two_Effect{
         brightness = 2;
         class NVGMarker {
-            diffuse[]={0.0015,0.0015,0.0015};
-            ambient[]={0.0001,0.0001,0.0001};
-            brightness=0.1;
+            diffuse[]={0.015,0.015,0.015};
+            ambient[]={0.001,0.001,0.001};
+            brightness=0.05;
             name = "pozicni blik";
             activeLight = 0;
             blinking=1;
             dayLight = 0;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.1,0.1,1,0.1};
+            blinkingPattern[] = {1,0.1,0.1,0.1};
         };
     };
 
@@ -266,16 +266,16 @@ class CfgVehicles {
     };
 
     class ACE_IR_Strobe_three_medium_Effect:ACE_IR_Strobe_three_Effect {
-        brightness = 5;
+        brightness = 6;
         class NVGMarker {
-            diffuse[]={0.003,0.003,0.003};
-            ambient[]={0.005,0.005,0.005};
-            brightness=0.2;
+            diffuse[]={0.015,0.015,0.015};
+            ambient[]={0.001,0.001,0.001};
+            brightness=0.1;
             name = "pozicni blik";
             activeLight = 1;
             blinking=1;
             dayLight = 1;
-            onlyInNvg = 0;
+            onlyInNvg = 1;
             useFlare = 0;
             blinkingPattern[] = {0.7,0.2,0.7,0.1,0.1,0.1};
         };
@@ -284,9 +284,9 @@ class CfgVehicles {
     class ACE_IR_Strobe_three_low_Effect: ACE_IR_Strobe_three_Effect {
         brightness = 2;
         class NVGMarker {
-            diffuse[]={0.0015,0.0015,0.0015};
-            ambient[]={0.0001,0.0001,0.0001};
-            brightness=0.1;
+            diffuse[]={0.015,0.015,0.015};
+            ambient[]={0.001,0.001,0.001};
+            brightness=0.05;
             name = "pozicni blik";
             activeLight = 0;
             blinking=1;
@@ -334,16 +334,16 @@ class CfgVehicles {
     };
 
     class ACE_IR_Strobe_four_medium_Effect:ACE_IR_Strobe_four_Effect {
-        brightness = 5;
+        brightness = 6;
         class NVGMarker {
-            diffuse[]={0.003,0.003,0.003};
-            ambient[]={0.005,0.005,0.005};
-            brightness=0.2;
+            diffuse[]={0.015,0.015,0.015};
+            ambient[]={0.001,0.001,0.001};
+            brightness=0.1;
             name = "pozicni blik";
             activeLight = 1;
             blinking=1;
             dayLight = 1;
-            onlyInNvg = 0;
+            onlyInNvg = 1;
             useFlare = 0;
             blinkingPattern[] = {0.7,0.2,0.7,0.2,0.7,0.1,0.1,0.1};
         };
@@ -352,9 +352,9 @@ class CfgVehicles {
     class ACE_IR_Strobe_four_low_Effect: ACE_IR_Strobe_four_Effect {
         brightness = 2;
         class NVGMarker {
-            diffuse[]={0.0015,0.0015,0.0015};
-            ambient[]={0.0001,0.0001,0.0001};
-            brightness=0.1;
+            diffuse[]={0.015,0.015,0.015};
+            ambient[]={0.001,0.001,0.001};
+            brightness=0.05;
             name = "pozicni blik";
             activeLight = 0;
             blinking=1;
