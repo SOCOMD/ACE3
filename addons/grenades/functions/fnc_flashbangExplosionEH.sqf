@@ -15,7 +15,7 @@
  * Public: No
  */
 
-params ["_grenadePosASL"];
+params ["_grenadePosASL","_count"];
 TRACE_1("params",_grenadePosASL);
 
 // Create flash to illuminate environment
@@ -103,8 +103,8 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
     };
 
     // add ace_medical pain effect:
-    if (isClass (configFile >> "CfgPatches" >> "ACE_Medical") && {_strength > 0.1}) then {
-        [ACE_player, _strength / 2] call EFUNC(medical,adjustPainLevel);
+    if (isClass (configFile >> "CfgPatches" >> "ACE_Medical") && {_strength > 0.85}) then {
+        [ACE_player, _strength / 15] call EFUNC(medical,adjustPainLevel);
     };
 
     // Effect on vision has a wider range, with a higher falloff
@@ -121,7 +121,7 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
     };
 
     // Blind player
-    if (_strength > 0.1) then {
+    if (_strength > 0.1 && _count < 1) then {
         GVAR(flashbangPPEffectCC) ppEffectEnable true;
         GVAR(flashbangPPEffectCC) ppEffectAdjust [1,1,(0.8 + _strength) min 1,[1,1,1,0],[0,0,0,1],[0,0,0,0]];
         GVAR(flashbangPPEffectCC) ppEffectCommit 0.01;
@@ -141,7 +141,7 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
     };
 
     // Make player flinch
-    if (_strength <= 0.2) exitWith {};
+    if (_strength <= 0.9 && _count > 1) exitWith {};
     private _minFlinch = linearConversion [0.2, 1, _strength, 0, 60, true];
     private _maxFlinch = linearConversion [0.2, 1, _strength, 0, 95, true];
     private _flinch    = (_minFlinch + random (_maxFlinch - _minFlinch)) * selectRandom [-1, 1];

@@ -17,8 +17,8 @@
  *
  * Public: No
  */
-#define TIME_OUT_HIT 1
-#define TIME_OUT_MOAN [12, 7.5, 5]
+#define TIME_OUT_HIT 5
+#define TIME_OUT_MOAN [50, 30, 15]
 
 params [["_unit", objNull, [objNull]], ["_type", "hit", [""]], ["_severity", 0, [0]]];
 // TRACE_3("",_unit,_type,_severity);
