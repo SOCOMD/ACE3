@@ -40,7 +40,7 @@ private _intensity = if (_light > 5) then {
 
 systemChat format ["%1 - %2", _light, _intensity];
 
-GVAR(scotopicCC) ppEffectEnable GVAR(scoTestToggle) && true;
+GVAR(scotopicCC) ppEffectEnable  true;
 // "players like the night blue"
 GVAR(scotopicCC) ppEffectAdjust  [1,1,0,[1,1,1,0],[_intensity*.95, _intensity*.95,_intensity*1.1, 1-_intensity], [0.15, 1.0, 1.50, 1]];
 GVAR(scotopicCC) ppEffectCommit 1;

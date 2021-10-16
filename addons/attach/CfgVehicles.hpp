@@ -230,8 +230,8 @@ class CfgVehicles {
             blinkingPattern[] = {1,0.1,0.1,0.1};
         };
     };
-
     
+
     class ACE_IR_Strobe_three_Effect: All {
         scope = 1;
         displayName = "IR Strobe";
@@ -297,9 +297,7 @@ class CfgVehicles {
         };
     };
 
-    
 
-    
     class ACE_IR_Strobe_four_Effect: All {
         scope = 1;
         displayName = "IR Strobe";
@@ -365,8 +363,135 @@ class CfgVehicles {
         };
     };
 
-    
-
+    class FloatingStructure_F;
+    class ACE_Red_Strobe_Effect: FloatingStructure_F {
+        author="$STR_A3_Bohemia_Interactive";
+        mapSize=0.28;
+        class SimpleObject
+        {
+            eden=1;
+            animate[]=
+            {
+                
+                {
+                    "light_1_blinking",
+                    1
+                }
+            };
+            hide[]=
+            {
+                "zasleh",
+                "zadni svetlo",
+                "brzdove svetlo",
+                "clan",
+                "podsvit pristroju",
+                "poskozeni"
+            };
+            verticalOffset=0.35299999;
+            verticalOffsetWorld=0;
+            init="''";
+        };
+        editorPreview="\A3\EditorPreviews_F\Data\CfgVehicles\RoadCone_L_F.jpg";
+        _generalMacro="RoadCone_L_F";
+        scope=1;
+        scopeCurator=2;
+        displayName="$STR_A3_cfgVehicles_RoadCone_L_F0";
+        model= QPATHTOF(data\ace_Light.p3d);
+        icon="iconObject_circle";
+        editorCategory="EdCat_Signs";
+        editorSubcategory="EdSubcat_RoadSigns";
+        vehicleClass="Cargo";
+        class AnimationSources
+        {
+            class Light_1_source
+            {
+                source="MarkerLight";
+                markerLight="Light_1";
+            };
+        };
+        class MarkerLights
+        {
+            class Light_1
+            {
+                color[] = {1,0.3,0.3};
+                ambient[]={0.1,0,0};
+                name="Light_1_pos";
+                blinking=1;
+                blinkingPattern[] = {0.1, 1.1}; // 0.1 s on, 1.1 s off
+                blinkingPatternGuarantee=1;
+                useFlare=1;
+                dayLight = 0;
+                drawLight = 1;
+                drawLightCenterSize = 0.08;
+                drawLightSize = 0.5;
+                intensity = 5;
+            };
+        };
+    };
+    class ACE_Green_Strobe_Effect: FloatingStructure_F {
+        author="$STR_A3_Bohemia_Interactive";
+        mapSize=0.28;
+        class SimpleObject
+        {
+            eden=1;
+            animate[]=
+            {
+                
+                {
+                    "light_1_blinking",
+                    1
+                }
+            };
+            hide[]=
+            {
+                "zasleh",
+                "zadni svetlo",
+                "brzdove svetlo",
+                "clan",
+                "podsvit pristroju",
+                "poskozeni"
+            };
+            verticalOffset=0.35299999;
+            verticalOffsetWorld=0;
+            init="''";
+        };
+        editorPreview="\A3\EditorPreviews_F\Data\CfgVehicles\RoadCone_L_F.jpg";
+        _generalMacro="RoadCone_L_F";
+        scope=1;
+        scopeCurator=2;
+        displayName="$STR_A3_cfgVehicles_RoadCone_L_F0";
+        model= QPATHTOF(data\ace_Light.p3d);
+        icon="iconObject_circle";
+        editorCategory="EdCat_Signs";
+        editorSubcategory="EdSubcat_RoadSigns";
+        vehicleClass="Cargo";
+        class AnimationSources
+        {
+            class Light_1_source
+            {
+                source="MarkerLight";
+                markerLight="Light_1";
+            };
+        };
+        class MarkerLights
+        {
+            class Light_1
+            {
+                color[] = {0.3,1,0.3};
+                ambient[]={0,0.1,0};
+                name="Light_1_pos";
+                blinking=1;
+                blinkingPattern[] = {0.1, 1.1}; // 0.1 s on, 1.1 s off
+                blinkingPatternGuarantee=1;
+                useFlare=1;
+                dayLight = 0;
+                drawLight = 1;
+                drawLightCenterSize = 0.08;
+                drawLightSize = 0.5;
+                intensity = 5;
+            };
+        };
+    };
     class NATO_Box_Base;
     class Box_NATO_Support_F: NATO_Box_Base {
         class TransportItems {

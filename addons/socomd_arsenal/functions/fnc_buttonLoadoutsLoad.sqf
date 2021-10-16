@@ -52,6 +52,12 @@ if(_gps in _ctabItems) then {
     _uniformLoadout set [1,_items];
 };
 GVAR(center) setUnitLoadout [_loadout, true];
+{
+    _hasItem = [GVAR(center), _x] call CBA_fnc_removeItem;
+    if(_hasItem) then {
+        GVAR(center) addItemToUniform  _x;
+    };
+} forEach _ctabItems;
 
 GVAR(currentItems) = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", [], [], [], [], [], []];
 for "_index" from 0 to 15 do {

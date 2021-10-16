@@ -17,8 +17,8 @@ class CfgWeapons {
 
     };
     class ACE_IR_Strobe_Item: ACE_IR_Strobe_Base {
-        ACE_attachable_children[] = {"ACE_IR_Strobe_Item_One", "ACE_IR_Strobe_Item_Two","ACE_IR_Strobe_Item_Three","ACE_IR_Strobe_Item_Four"};
-        // ACE_attachable_children[] = {"ACE_IR_Strobe_Item_One"};
+        // ACE_attachable_children[] = {"ACE_IR_Strobe_Item_Green_Strobe","ACE_IR_Strobe_Item_Red_Strobe","ACE_IR_Strobe_Item_One", "ACE_IR_Strobe_Item_Two","ACE_IR_Strobe_Item_Three","ACE_IR_Strobe_Item_Four"};
+        ACE_attachable_children[] = {"ACE_IR_Strobe_Item_Visible_Strobe","ACE_IR_Strobe_Item_One"};
         ACE_attachable = "ACE_IR_Strobe_one_Effect";
         scope = 2;
     };
@@ -74,7 +74,7 @@ class CfgWeapons {
         ACE_attachable = "ACE_IR_Strobe_three_low_Effect";
     };
     class ACE_IR_Strobe_Item_Four : ACE_IR_Strobe_Base{
-        selectName = "IR Mode 3";
+        selectName = "IR Mode 4";
         ACE_attachable_children[] = {"ACE_IR_Strobe_Item_Four_High","ACE_IR_Strobe_Item_Four_Medium","ACE_IR_Strobe_Item_Four_Low"};
         ACE_attachable = "ACE_IR_Strobe_four_Effect";
     };
@@ -89,5 +89,18 @@ class CfgWeapons {
     class ACE_IR_Strobe_Item_Four_Low : ACE_IR_Strobe_Base{
         selectName = "IR Mode 4 - Low";
         ACE_attachable = "ACE_IR_Strobe_four_low_Effect";
+    };
+    class ACE_IR_Strobe_Item_Visible_Strobe : ACE_IR_Strobe_Base{
+        ACE_attachable_children[] = {"ACE_IR_Strobe_Item_Red_Strobe","ACE_IR_Strobe_Item_Green_Strobe"};
+        selectName = "Visible Modes";
+        ACE_attachable = "ACE_Red_Strobe_Effect";
+    };
+    class ACE_IR_Strobe_Item_Red_Strobe : ACE_IR_Strobe_Base{
+        selectName = "Red Strobe";
+        ACE_attachable = "ACE_Red_Strobe_Effect";
+    };
+    class ACE_IR_Strobe_Item_Green_Strobe : ACE_IR_Strobe_Base{
+        selectName = "Green Strobe";
+        ACE_attachable = "ACE_Green_Strobe_Effect";
     };
 };
