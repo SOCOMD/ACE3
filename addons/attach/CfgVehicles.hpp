@@ -492,6 +492,12 @@ class CfgVehicles {
             };
         };
     };
+    class NVG_TargetBase: All {
+        class NVGMarker {
+            maxLifetime = "8 * 60 * 60";
+        };
+    };
+
     class NATO_Box_Base;
     class Box_NATO_Support_F: NATO_Box_Base {
         class TransportItems {

@@ -34,7 +34,7 @@ if (_itemVehClass == "") then {
     _attachToLocation = getArray (configFile >> "CfgMagazines" >> _itemClassname >> "ACE_AttachToLocation");
 };
 if (_attachToLocation isEqualTo []) then {
-    _attachToLocation = [[0.05, -0.09, 0.1],"leftshoulder"];
+    _attachToLocation = [[0.07, -0.06, 0.085],"leftshoulder"];
 };
 _coords = _attachToLocation select 0;
 _bone = _attachToLocation select 1;
@@ -60,7 +60,7 @@ if (_unit == _attachToVehicle) then {  //Self Attachment
         [_onAttachText, 2] call EFUNC(common,displayTextStructured);
     };
     _unit setVariable [QGVAR(attached), [[_attachedItem, _itemClassname]], true];
-    [QGVAR(attached), [_attachedItem, _itemClassname]] call CBA_fnc_localEvent;
+    [QGVAR(attached), [_attachedItem, _itemClassname, _silentScripted]] call CBA_fnc_localEvent;
 } else {
     GVAR(placeAction) = PLACE_WAITING;
 
