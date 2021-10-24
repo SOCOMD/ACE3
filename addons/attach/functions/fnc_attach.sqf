@@ -50,13 +50,11 @@ if (_itemUsedClass == "") then {
 };
 
 if (_unit == _attachToVehicle) then {  //Self Attachment
+    systemChat format ["%1",_itemClassname];
     private _attachedItem = _itemVehClass createVehicle [0,0,0];
     _attachedItem attachTo [_unit, _coords, _bone, true];
     if (!_silentScripted) then {
-        if (_itemUsedClass != "") then {
-            _itemClassname = _itemUsedClass;
-        };
-        _unit removeItem _itemClassname;
+        _unit removeItem _itemUsedClass;
         [_onAttachText, 2] call EFUNC(common,displayTextStructured);
     };
     _unit setVariable [QGVAR(attached), [[_attachedItem, _itemClassname]], true];

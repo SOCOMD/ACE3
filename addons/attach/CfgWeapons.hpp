@@ -17,8 +17,8 @@ class CfgWeapons {
 
     };
     class ACE_IR_Strobe_Item: ACE_IR_Strobe_Base {
-        // ACE_attachable_children[] = {"ACE_IR_Strobe_Item_Green_Strobe","ACE_IR_Strobe_Item_Red_Strobe","ACE_IR_Strobe_Item_One", "ACE_IR_Strobe_Item_Two","ACE_IR_Strobe_Item_Three","ACE_IR_Strobe_Item_Four"};
-        ACE_attachable_children[] = {"ACE_IR_Strobe_Item_Visible_Strobe","ACE_IR_Strobe_Item_One"};
+        ACE_attachable_children[] = {"ACE_IR_Strobe_Item_Green_Strobe","ACE_IR_Strobe_Item_Red_Strobe","ACE_IR_Strobe_Item_One", "ACE_IR_Strobe_Item_Two","ACE_IR_Strobe_Item_Three","ACE_IR_Strobe_Item_Four"};
+        // ACE_attachable_children[] = {"ACE_IR_Strobe_Item_Visible_Strobe","ACE_IR_Strobe_Item_One"};
         ACE_attachable = "ACE_IR_Strobe_one_Effect";
         scope = 2;
     };

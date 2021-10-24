@@ -212,7 +212,6 @@ class CfgVehicles {
             dayLight = 1;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {1,0.1,0.1,0.1};
         };
     };
     class ACE_IR_Strobe_two_low_Effect:ACE_IR_Strobe_two_Effect{
@@ -227,7 +226,6 @@ class CfgVehicles {
             dayLight = 0;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {1,0.1,0.1,0.1};
         };
     };
     
@@ -248,7 +246,7 @@ class CfgVehicles {
             dayLight = 0;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.7,0.2,0.7,0.1,0.1,0.1};
+            blinkingPattern[] = {0.8,0.1,0.8,0.1,0.1,0.1};
         };
 
         side = 7;//-1=NO_SIDE yellow box,3=CIV grey box,4=NEUTRAL yellow box,6=FRIENDLY green box,7=LOGIC no radar signature
@@ -277,7 +275,6 @@ class CfgVehicles {
             dayLight = 1;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.7,0.2,0.7,0.1,0.1,0.1};
         };
     };
 
@@ -293,7 +290,6 @@ class CfgVehicles {
             dayLight = 0;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.7,0.2,0.7,0.1,0.1,0.1};
         };
     };
 
@@ -314,7 +310,7 @@ class CfgVehicles {
             dayLight = 0;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.7,0.2,0.7,0.2,0.7,0.1,0.1,0.1};
+            blinkingPattern[] = {0.8,0.1,0.8,0.1,0.8,0.1,0.1,0.1};
         };
 
         side = 7;//-1=NO_SIDE yellow box,3=CIV grey box,4=NEUTRAL yellow box,6=FRIENDLY green box,7=LOGIC no radar signature
@@ -343,7 +339,6 @@ class CfgVehicles {
             dayLight = 1;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.7,0.2,0.7,0.2,0.7,0.1,0.1,0.1};
         };
     };
 
@@ -359,7 +354,6 @@ class CfgVehicles {
             dayLight = 0;
             onlyInNvg = 1;
             useFlare = 0;
-            blinkingPattern[] = {0.7,0.2,0.7,0.2,0.7,0.1,0.1,0.1};
         };
     };
 
@@ -414,7 +408,7 @@ class CfgVehicles {
             class Light_1
             {
                 color[] = {1,0.3,0.3};
-                ambient[]={0.1,0,0};
+                ambient[]={0.5,0,0};
                 name="Light_1_pos";
                 blinking=1;
                 blinkingPattern[] = {0.1, 1.1}; // 0.1 s on, 1.1 s off
@@ -478,7 +472,7 @@ class CfgVehicles {
             class Light_1
             {
                 color[] = {0.3,1,0.3};
-                ambient[]={0,0.1,0};
+                ambient[]={0,0.5,0};
                 name="Light_1_pos";
                 blinking=1;
                 blinkingPattern[] = {0.1, 1.1}; // 0.1 s on, 1.1 s off
@@ -492,6 +486,7 @@ class CfgVehicles {
             };
         };
     };
+
     class NVG_TargetBase: All {
         class NVGMarker {
             maxLifetime = "8 * 60 * 60";
