@@ -50,7 +50,6 @@ if (_itemUsedClass == "") then {
 };
 
 if (_unit == _attachToVehicle) then {  //Self Attachment
-    systemChat format ["%1",_itemClassname];
     private _attachedItem = _itemVehClass createVehicle [0,0,0];
     _attachedItem attachTo [_unit, _coords, _bone, true];
     if (!_silentScripted) then {
