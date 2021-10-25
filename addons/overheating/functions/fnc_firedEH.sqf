@@ -94,11 +94,11 @@ if ((_unit ammo _weapon) % 3 == 0) then {
     _this call FUNC(overheat);
 };
 
-// reset cookoff heat
-if (GVAR(cookoffCoef) > 0) then {
-    _unit setVariable [format [QGVAR(%1_ammoTemp), _weapon], 0];
-    [_unit, _weapon, _temperature] call FUNC(updateAmmoTemperature);
-};
+// // reset cookoff heat
+// if (GVAR(cookoffCoef) > 0) then {
+//     _unit setVariable [format [QGVAR(%1_ammoTemp), _weapon], 0];
+//     [_unit, _weapon, _temperature] call FUNC(updateAmmoTemperature);
+// };
 
 // decrease time to next shot as heat increases, value is a coef where 1 is unchanged and 0 is instant, 0.8 is a 25% faster ROF.
 // this could be filtered by weapon type, but I think the heat gain and rate of fire on non-automatic weapons is low enough not to bother
