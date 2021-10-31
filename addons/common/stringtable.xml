@@ -10,7 +10,7 @@
             <Chinesesimp>通用</Chinesesimp>
             <Korean>일반</Korean>
             <Polish>Ogólny</Polish>
-            <Russian>Общий</Russian>
+            <Russian>Общие</Russian>
             <Portuguese>Comum</Portuguese>
             <Spanish>Común</Spanish>
             <Czech>Obecné</Czech>
@@ -27,7 +27,7 @@
             <Portuguese>ACE-Team</Portuguese>
             <Hungarian>ACE-Team</Hungarian>
             <Italian>ACE-Team</Italian>
-            <Japanese>ACE-チーム</Japanese>
+            <Japanese>ACE チーム</Japanese>
             <Korean>ACE-Team</Korean>
             <Chinese>ACE-製作團隊</Chinese>
             <Chinesesimp>ACE-制作团队</Chinesesimp>
@@ -133,6 +133,7 @@
             <Korean>북북동</Korean>
             <Chinese>北北東</Chinese>
             <Chinesesimp>北北东</Chinesesimp>
+            <Turkish>KKD</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_NE">
             <English>NE</English>
@@ -166,6 +167,7 @@
             <Korean>동북동</Korean>
             <Chinese>東北東</Chinese>
             <Chinesesimp>东北东</Chinesesimp>
+            <Turkish>DKD</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_E">
             <English>E</English>
@@ -199,6 +201,7 @@
             <Korean>동남동</Korean>
             <Chinese>東南東</Chinese>
             <Chinesesimp>东南东</Chinesesimp>
+            <Turkish>DGD</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_SE">
             <English>SE</English>
@@ -232,6 +235,7 @@
             <Korean>남남동</Korean>
             <Chinese>南南東</Chinese>
             <Chinesesimp>南南东</Chinesesimp>
+            <Turkish>GGD</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_S">
             <English>S</English>
@@ -265,6 +269,7 @@
             <Korean>남남서</Korean>
             <Chinese>南南西</Chinese>
             <Chinesesimp>南南西</Chinesesimp>
+            <Turkish>GGB</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_SW">
             <English>SW</English>
@@ -298,6 +303,7 @@
             <Korean>서남서</Korean>
             <Chinese>西南西</Chinese>
             <Chinesesimp>西南西</Chinesesimp>
+            <Turkish>BGB</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_W">
             <English>W</English>
@@ -331,6 +337,7 @@
             <Korean>서북서</Korean>
             <Chinese>西北西</Chinese>
             <Chinesesimp>西北西</Chinesesimp>
+            <Turkish>BKB</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_NW">
             <English>NW</English>
@@ -364,6 +371,7 @@
             <Korean>북북서</Korean>
             <Chinese>北北西</Chinese>
             <Chinesesimp>北北西</Chinesesimp>
+            <Turkish>KKB</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_ActionAborted">
             <English>Action cancelled.</English>
@@ -380,6 +388,7 @@
             <Korean>행동 취소됨.</Korean>
             <Chinese>動作已被取消</Chinese>
             <Chinesesimp>动作已被取消</Chinesesimp>
+            <Turkish>Işlem iptal edildi.</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_MiscItems">
             <English>[ACE] Miscellaneous Items</English>
@@ -488,6 +497,8 @@
             <Polish>Określa akcję, która ma być podjęta, jeśli gracz nie ma właściwych PBO.</Polish>
             <Japanese>プレイヤーが不正規の PBO を所持している場合の動作を決定します。</Japanese>
             <Spanish>Define la accion a tomar si un jugador no tiene el PBO correcto</Spanish>
+            <Russian>Определяет, какое действие будет предпринято, если игрок не имеет корректные PBO.</Russian>
+            <German>Definiert, was passieren soll, wenn ein Spieler nicht die korrekten PBOs nutzt.</German>
         </Key>
         <Key ID="STR_ACE_Common_CheckPBOsCheckAll">
             <English>Check PBO All</English>
@@ -512,6 +523,8 @@
             <Polish>Sprawdź wszystkie dodatki, nie tylko ACE.</Polish>
             <Japanese>ACE のみならず、全てのアドオンを検査します。</Japanese>
             <Spanish>Comprueba todos los complementos, no sólo los de ACE</Spanish>
+            <Russian>Проверять все аддоны, а не только ACE.</Russian>
+            <German>Überprüft alle Erweiterungen, nicht nur die von ACE.</German>
         </Key>
         <Key ID="STR_ACE_Common_CheckPBOsWhitelist">
             <English>Check PBO Whitelist</English>
@@ -536,6 +549,8 @@
             <Polish>Zdefiniuj listę niezależnie od dozwolonych dodatków.</Polish>
             <Japanese>許可するアドオンを定義します。</Japanese>
             <Spanish>Comprueba la lista de PBOs permitidos</Spanish>
+            <Russian>Задать список непроверяемых аддонов.</Russian>
+            <German>Ermöglicht das Erstellen einer Liste von immer erlaubten Erweiterungen.</German>
         </Key>
         <Key ID="STR_ACE_Common_SettingFeedbackIconsName">
             <English>Feedback icons</English>
@@ -664,6 +679,18 @@
             <Korean>ACE 힌트에 쓰이는 글씨 색입니다. 힌트 글씨의 색이 정해지지 않을경우 모든 힌트의 색은 기본으로 설정됩니다.</Korean>
             <Chinese>設定ACE提示文字的顏色。若提示字體並無指定其他顏色，將會自動選用ACE系統的預設顏色</Chinese>
             <Chinesesimp>设定ACE提示文字的颜色。若提示字体并无指定其他颜色，将会自动选用ACE系统的预设颜色。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACE_Common_subcategory_colors">
+            <English>Colors</English>
+            <Czech>Barvy</Czech>
+            <French>Couleurs</French>
+            <German>Farben</German>
+            <Italian>Colori</Italian>
+            <Polish>Kolory</Polish>
+            <Portuguese>Cores</Portuguese>
+            <Russian>Цвета</Russian>
+            <Spanish>Colores</Spanish>
+            <Japanese>色</Japanese>
         </Key>
         <Key ID="STR_ACE_Common_SettingPersistentLaserName">
             <English>Persistent weapon laserpointer/flashlight</English>
@@ -805,6 +832,7 @@
             <Korean>경고 한 번</Korean>
             <Chinese>警告 (一次)</Chinese>
             <Chinesesimp>警告 (一次)</Chinesesimp>
+            <Turkish>UYAR</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_CheckPBO_Action_WarnPerm">
             <English>Warn (permanent)</English>
@@ -821,6 +849,7 @@
             <Korean>경고 (영구적)</Korean>
             <Chinese>警告 (持續)</Chinese>
             <Chinesesimp>警告 (持续)</Chinesesimp>
+            <Turkish>UYAR (KALICI)</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_CheckPBO_Action_Kick">
             <English>Kick</English>
@@ -837,6 +866,7 @@
             <Korean>추방</Korean>
             <Chinese>踢除</Chinese>
             <Chinesesimp>踢除</Chinesesimp>
+            <Turkish>AT</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_CheckPBO_CheckAll_DisplayName">
             <English>Check all addons</English>
@@ -885,6 +915,7 @@
             <Korean>화이트리스트</Korean>
             <Chinese>白名單</Chinese>
             <Chinesesimp>白名单</Chinesesimp>
+            <Turkish>Beyaz Liste</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_CheckPBO_Whitelist_Description">
             <English>What addons are allowed regardless?</English>
@@ -996,6 +1027,7 @@
             <Korean>비활성화</Korean>
             <Chinese>停用</Chinese>
             <Chinesesimp>停用</Chinesesimp>
+            <Turkish>Devre Dışı</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_Enabled">
             <English>Enabled</English>
@@ -1011,6 +1043,7 @@
             <Korean>활성화</Korean>
             <Chinese>啟用</Chinese>
             <Chinesesimp>启用</Chinesesimp>
+            <Turkish>Etkin</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_Always">
             <English>Always</English>
@@ -1024,6 +1057,7 @@
             <Italian>Sempre</Italian>
             <Czech>Vždy</Czech>
             <Polish>Zawsze</Polish>
+            <Turkish>Her Zaman</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_Anywhere">
             <English>Anywhere</English>
@@ -1039,6 +1073,7 @@
             <Japanese>どこでも</Japanese>
             <Korean>어디서나</Korean>
             <Chinese>任何地方</Chinese>
+            <Turkish>Herhangi bir yer</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_Basic">
             <English>Basic</English>
@@ -1054,6 +1089,7 @@
             <Japanese>ベーシック</Japanese>
             <Korean>기본</Korean>
             <Chinese>基礎</Chinese>
+            <Turkish>Basit</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_Vehicle">
             <English>Medical Vehicles</English>
@@ -1069,6 +1105,7 @@
             <Japanese>医療車両のみ</Japanese>
             <Korean>의료차량</Korean>
             <Chinese>醫療載具</Chinese>
+            <Turkish>Medikal Araçlar</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_Yes">
             <English>Yes</English>
@@ -1085,6 +1122,7 @@
             <Korean>예</Korean>
             <Chinese>是</Chinese>
             <Chinesesimp>是</Chinesesimp>
+            <Turkish>Evet</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_No">
             <English>No</English>
@@ -1101,6 +1139,7 @@
             <Korean>아니오</Korean>
             <Chinese>否</Chinese>
             <Chinesesimp>否</Chinesesimp>
+            <Turkish>Hayır</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_Confirm">
             <English>Confirm</English>
@@ -1114,6 +1153,7 @@
             <Italian>Conferma</Italian>
             <Czech>Potvrdit</Czech>
             <Polish>Potwierdź</Polish>
+            <Turkish>Onayla</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_Never">
             <English>Never</English>
@@ -1127,6 +1167,7 @@
             <Italian>Mai</Italian>
             <Czech>Nikdy</Czech>
             <Polish>Nigdy</Polish>
+            <Turkish>Hiçbir zaman</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_VehiclesOnly">
             <English>Vehicles only</English>
@@ -1142,6 +1183,7 @@
             <Korean>차량 전용</Korean>
             <Chinese>只有載具</Chinese>
             <Chinesesimp>只有载具</Chinesesimp>
+            <Turkish>Sadece Arabalar</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_DoNotForce">
             <English>Do Not Force</English>
@@ -1157,6 +1199,7 @@
             <Korean>강제하지 말것</Korean>
             <Chinese>不要強行</Chinese>
             <Chinesesimp>不要强行</Chinesesimp>
+            <Turkish>Zorlama</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_ACEKeybindCategoryEquipment">
             <English>ACE Equipment</English>
@@ -1172,6 +1215,7 @@
             <Korean>ACE 장비</Korean>
             <Chinese>ACE 裝備按鍵</Chinese>
             <Chinesesimp>ACE 装备按键</Chinesesimp>
+            <Turkish>ACE Ekipmanlar</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_ACEKeybindCategoryCommon">
             <English>ACE Common</English>
@@ -1187,6 +1231,7 @@
             <Korean>ACE 일반</Korean>
             <Chinese>ACE 通用按鍵</Chinese>
             <Chinesesimp>ACE 通用按键</Chinesesimp>
+            <Turkish>ACE Common</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_ACEKeybindCategoryWeapons">
             <English>ACE Weapons</English>
@@ -1202,6 +1247,7 @@
             <Korean>ACE 무기</Korean>
             <Chinese>ACE 武器按鍵</Chinese>
             <Chinesesimp>ACE 武器按键</Chinesesimp>
+            <Turkish>ACE Silahlar</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_ACEKeybindCategoryMovement">
             <English>ACE Movement</English>
@@ -1217,6 +1263,7 @@
             <Korean>ACE 움직임</Korean>
             <Chinese>ACE 動作按鍵</Chinese>
             <Chinesesimp>ACE 动作按键</Chinesesimp>
+            <Turkish>ACE Hareket</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_ACEKeybindCategoryScopeAdjustment">
             <English>ACE Scope Adjustment</English>
@@ -1247,6 +1294,10 @@
             <Korean>ACE 차량</Korean>
             <Chinese>ACE 載具按鍵</Chinese>
             <Chinesesimp>ACE 载具按键</Chinesesimp>
+            <Turkish>ACE Araçlar</Turkish>
+        </Key>
+        <Key ID="STR_ACE_Common_categoryUncategorized">
+            <English>ACE Uncategorized</English>
         </Key>
         <Key ID="STR_ACE_Common_NoRoomToUnload">
             <English>No Room to unload</English>
@@ -1263,6 +1314,23 @@
             <Chinesesimp>没有空间可卸载</Chinesesimp>
             <Korean>언로드 할 공간이 없습니다.</Korean>
         </Key>
+        <Key ID="STR_ACE_Common_Inventory_Full">
+            <English>No inventory space</English>
+            <German>Kein Platz im Inventar</German>
+            <Spanish>Sin espacio en inventario</Spanish>
+            <Polish>Brak miejsca w ekwipunku</Polish>
+            <French>Pas de place dans l'inventaire</French>
+            <Czech>Nedostatek místa v inventáři</Czech>
+            <Portuguese>Sem espaço no inventário</Portuguese>
+            <Italian>Non hai più spazio</Italian>
+            <Hungarian>Nincs több hely</Hungarian>
+            <Russian>В инвентаре нет места</Russian>
+            <Japanese>インベントリに空きがない</Japanese>
+            <Korean>넣을 공간이 없음</Korean>
+            <Chinese>無可用空間</Chinese>
+            <Chinesesimp>无可用空间</Chinesesimp>
+            <Turkish>Envanter de alan yok</Turkish>
+        </Key>
         <Key ID="STR_ACE_Common_KeybindToggle">
             <English>Toggle</English>
             <Polish>переключить</Polish>
@@ -1278,6 +1346,7 @@
             <Korean>토글</Korean>
             <Chinese>切換</Chinese>
             <Chinesesimp>切换</Chinesesimp>
+            <Turkish>Değiştir</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_Weight">
             <English>Weight:</English>
@@ -1294,6 +1363,7 @@
             <Korean>무게:</Korean>
             <Chinesesimp>重量:</Chinesesimp>
             <Chinese>重量:</Chinese>
+            <Turkish>Ağırlık:</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_AllowFadeMusic">
             <English>Allow turning down music</English>
@@ -1309,6 +1379,7 @@
             <French>Permission d'abaisser la musique</French>
             <Czech>Povolit snížení hlasitosti hudby</Czech>
             <Spanish>Permitir reducir el volumen de la música</Spanish>
+            <Turkish>Müziği kısmaya izin ver</Turkish>
         </Key>
         <Key ID="STR_ACE_Common_AllowFadeMusicTooltip">
             <English>Allow ACE scripts to turn down the music.</English>
@@ -1324,6 +1395,21 @@
             <French>Autorise les scripts ACE à baisser le volume de la musique.</French>
             <Czech>Povolit ACE skriptům snížit hlasitost hudby</Czech>
             <Spanish>Permitir a los scripts de ACE reducir el volumen la música</Spanish>
+            <Turkish>ACE scripti müziği kısmana izin verir</Turkish>
+        </Key>
+        <Key ID="STR_ACE_Common_EpilepsyFriendlyMode">
+            <English>Epilepsy friendly mode</English>
+            <German>Epilepsiefreundlicher Modus</German>
+            <Japanese>けいれん回避モード</Japanese>
+            <Polish>Tryb dla epileptyków</Polish>
+            <French>Mode adapté à l'épilepsie</French>
+        </Key>
+        <Key ID="STR_ACE_Common_EpilepsyFriendlyModeTooltip">
+            <English>Disables some flashing light effects to reduce seizure risk.</English>
+            <German>Deaktiviert einige Lichtflackereffekte um das Risiko von Epilepsieanfällen zu reduzieren.</German>
+            <Japanese>点滅する光エフェクトを無効化し、けいれんする恐れを低下させます。</Japanese>
+            <Polish>Wyłącz część migających efektów w celu zredukowania ryzyka napadu epilepsji</Polish>
+            <French>Désactive certains effets de lumière clignotante afin de réduire les risques de crise d'épilepsie.</French>
         </Key>
         <Key ID="STR_ACE_Common_FlagBlack">
             <English>Flag (ACE - Black)</English>
@@ -1372,6 +1458,10 @@
             <Chinese>只限玩家</Chinese>
             <Turkish>Sadece oyuncular</Turkish>
         </Key>
+        <Key ID="STR_ACE_Common_aiOnly">
+            <English>AI only</English>
+            <Polish>Tylko dla AI</Polish>
+        </Key>
         <Key ID="STR_ACE_Common_playersAndAI">
             <English>Players and AI</English>
             <Russian>Игроков и ботов</Russian>
@@ -1398,6 +1488,107 @@
             <Japanese>セルフ インタラクションに動作を表示</Japanese>
             <Italian>Mostra le azioni nel menu di interazione con se stessi</Italian>
             <Spanish>Mostrar la acción en el menú de interacción propio</Spanish>
+            <Czech>Zobrazit akci v menu vlastních interakcí</Czech>
+            <Russian>Показывать действие в меню взаимодействия с собой.</Russian>
+            <Turkish>Kendi etkileşimim menüsünde animasyonları göster</Turkish>
+            <German>Zeigt die Aktion im Selbstinteraktionsmenü</German>
+        </Key>
+        <Key ID="STR_ACE_Common_both">
+            <English>Both</English>
+            <Turkish>İkisi de</Turkish>
+            <Japanese>両方</Japanese>
+            <French>Les deux</French>
+            <Russian>Оба</Russian>
+            <German>Beide</German>
+            <Polish>Oba</Polish>
+        </Key>
+        <Key ID="STR_ACE_Common_progressBarInfoName">
+            <English>Additional progress bar information</English>
+            <Japanese>プログレス バー詳細情報</Japanese>
+            <French>Infos supplémentaires de la barre de progression</French>
+            <Russian>Дополнительная информация прогресс-бара</Russian>
+            <German>Zusätzliche Informationen beim Fortschrittsbalken</German>
+            <Polish>Dodatkowe informacje na pasku postępu </Polish>
+        </Key>
+        <Key ID="STR_ACE_Common_progressBarInfoDesc">
+            <English>Controls extra information shown in progress bar.</English>
+            <Japanese>プログレス バーへ表示される情報量を決定します。</Japanese>
+            <French>Définit quelles informations supplémentaires sont affichées dans la barre de progression.</French>
+            <Russian>Устанавливает дополнительную информацию в прогресс-баре.</Russian>
+            <German>Kontrolliert zusätzliche Informationen beim Fortschrittsbalkens</German>
+            <Polish>Kontroluje dodatkowe informacje na pasku postępu.</Polish>
+        </Key>
+        <Key ID="STR_ACE_Common_progressBarInfoPercentage">
+            <English>Percentage</English>
+            <Japanese>パーセンテージ</Japanese>
+            <French>Pourcentage</French>
+            <Russian>Процент выполнения</Russian>
+            <German>Prozent</German>
+            <Polish>Procent</Polish>
+        </Key>
+        <Key ID="STR_ACE_Common_progressBarInfoTime">
+            <English>Time remaining</English>
+            <Japanese>残り時間</Japanese>
+            <French>Temps restant</French>
+            <Russian>Времени осталось</Russian>
+            <German>Zeit verbleibend</German>
+            <Polish>Pozostały czas</Polish>
+        </Key>
+        <Key ID="STR_ACE_Common_None">
+            <English>None</English>
+            <Czech>Žádná</Czech>
+            <German>Keine</German>
+            <Russian>Нет</Russian>
+            <Polish>Brak</Polish>
+            <Italian>Nessuna</Italian>
+            <Spanish>Nada</Spanish>
+            <French>Aucune</French>
+            <Chinese>無</Chinese>
+            <Japanese>なし</Japanese>
+            <Korean>활성화 없음</Korean>
+            <Portuguese>Nenhuma</Portuguese>
+            <Chinesesimp>无</Chinesesimp>
+            <Turkish>Yok</Turkish>
+        </Key>
+        <Key ID="STR_ACE_Common_Rename">
+            <English>Rename</English>
+            <Spanish>Renombrar</Spanish>
+            <French>Renommer</French>
+            <German>Umbenennen</German>
+            <Polish>Zmień nazwę</Polish>
+            <Japanese>改名</Japanese>
+            <Italian>Rinomina</Italian>
+            <Korean>이름바꾸기</Korean>
+            <Chinese>重新命名</Chinese>
+            <Chinesesimp>重新命名</Chinesesimp>
+            <Russian>Переименовать</Russian>
+            <Portuguese>Renomear</Portuguese>
+            <Czech>Přejmenovat</Czech>
+            <Turkish>Yeniden adlandır</Turkish>
+        </Key>
+        <Key ID="STR_ACE_Common_TimeLeft">
+            <English>Time left: %1s</English>
+            <Japanese>残り時間: %1 秒</Japanese>
+            <French>Temps restant : %1 s</French>
+            <Russian>Оставшееся время: %1s</Russian>
+            <German>Zeit übrig %1s</German>
+            <Polish>Pozostały czas: %1s</Polish>
+        </Key>
+        <Key ID="STR_ACE_Common_LocationsBoostTraining_DisplayName">
+            <English>Locations Boost Training</English>
+            <Czech>Zdravotnická místa zvyšují zdravotnickou úrovně</Czech>
+            <Italian>Sedi per potenziare la formazione</Italian>
+            <German>Örtliche Trainingssteigerung</German>
+            <Spanish>Ubicación mejora entrenamiento.</Spanish>
+            <Polish>Miejsca zwiększają wyszkolenie</Polish>
+            <Portuguese>Localização melhora treinamento</Portuguese>
+            <French>Le lieu améliore l'efficacité</French>
+            <Russian>Места ускоренного обучения</Russian>
+            <Japanese>衛生能力の上昇位置</Japanese>
+            <Korean>교육 증가 지역</Korean>
+            <Chinesesimp>受所在位置影响提升医疗能力</Chinesesimp>
+            <Chinese>受所在位置影響提升醫療能力</Chinese>
+            <Turkish>Konumlar Tedaviyi Hızlandırır</Turkish>
         </Key>
     </Package>
 </Project>

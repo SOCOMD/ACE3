@@ -57,6 +57,11 @@ class CfgWeapons {
     class rhs_weap_svds_npz: rhs_weap_svds {
         ACE_RailHeightAboveBore = 4.3348;
     };
+    class rhs_weap_rpk_base;
+    class rhs_weap_rpk74_base: rhs_weap_rpk_base {
+        ACE_barrelLength = 590.00;
+        ACE_barrelTwist = 195.072;
+    };
     class rhs_pkp_base;
     class rhs_weap_pkp: rhs_pkp_base {
         ACE_barrelTwist = 240.03;
@@ -66,10 +71,6 @@ class CfgWeapons {
         ACE_Overheating_allowSwapBarrel = 1;
         ACE_barrelTwist = 240.03;
         ACE_barrelLength = 645.16;
-    };
-    class rhs_weap_rpk74: rhs_weap_pkp {
-        ACE_barrelTwist = 195.072;
-        ACE_barrelLength = 589.28;
     };
     class rhs_weap_orsis_Base_F;
     class rhs_weap_t5000: rhs_weap_orsis_Base_F { // http://en.orsis.com/production/catalog/19046/
@@ -125,6 +126,10 @@ class CfgWeapons {
         HEARING_PROTECTION_VICCREW
     };
 
+    class rhs_6b48: H_HelmetB {
+        HEARING_PROTECTION_VICCREW
+    };
+
     class rhs_zsh7a: H_HelmetB {
         HEARING_PROTECTION_VICCREW
     };
@@ -173,6 +178,11 @@ class CfgWeapons {
             };
         };
         class WeaponSlotsInfo: WeaponSlotsInfo {
+            // One WeaponSlot with a positive value for iconScale forces game to use icon overlay method.
+            // Required, because the inventory icon has no accessory variants.
+            class MuzzleSlot {
+                iconScale = 0.1;
+            };
             mass = 670; // 2B14 Mortar Weight
         };
         displayName = ECSTRING(CSW,2b14_tube);
@@ -193,6 +203,9 @@ class CfgWeapons {
             };
         };
         class WeaponSlotsInfo: WeaponSlotsInfo {
+            class MuzzleSlot {
+                iconScale = 0.1;
+            };
             mass = 550;
         };
         displayName = ECSTRING(CSW,nsv_gun);
@@ -214,6 +227,9 @@ class CfgWeapons {
             };
         };
         class WeaponSlotsInfo: WeaponSlotsInfo {
+            class MuzzleSlot {
+                iconScale = 0.1;
+            };
             mass = 550;
         };
         displayName = ECSTRING(CSW,kord_gun);
@@ -234,6 +250,9 @@ class CfgWeapons {
             };
         };
         class WeaponSlotsInfo: WeaponSlotsInfo {
+            class MuzzleSlot {
+                iconScale = 0.1;
+            };
             mass = 400; // https://odin.tradoc.army.mil/mediawiki/index.php/AGS-17_Russian_30mm_Automatic_Grenade_Launcher
         };
         displayName = ECSTRING(CSW,ags30_gun);
@@ -250,10 +269,13 @@ class CfgWeapons {
             deployTime = 4;
             pickupTime = 4;
             class assembleTo {
-                EGVAR(csw,spg9Tripod) = "rhsgref_ins_SPG9";
+                EGVAR(csw,spg9Tripod) = "rhs_SPG9_INS";
             };
         };
         class WeaponSlotsInfo: WeaponSlotsInfo {
+            class MuzzleSlot {
+                iconScale = 0.1;
+            };
             mass = 1000;
         };
         displayName = ECSTRING(csw,spg9_tube);
@@ -263,13 +285,15 @@ class CfgWeapons {
         modes[] = {};
         picture = "\rhsafrf\addons\rhs_heavyweapons\data\ico\rhs_SPG9_INS_ca.paa";
     };
+
     class GVAR(spg9m_carry): GVAR(spg9_carry) {
-        class ACE_CSW {
+        class ACE_CSW: ACE_CSW {
             class assembleTo {
                 EGVAR(csw,spg9Tripod) = "rhs_SPG9M_MSV";
             };
         };
         displayName = ECSTRING(csw,spg9m_tube);
+        author = ECSTRING(common,ACETeam);
     };
 
     class GVAR(metis_carry): Launcher_Base_F {
@@ -280,6 +304,9 @@ class CfgWeapons {
             deploy = "rhs_Metis_9k115_2_msv";
         };
         class WeaponSlotsInfo: WeaponSlotsInfo {
+            class MuzzleSlot {
+                iconScale = 0.1;
+            };
             mass = 300;
         };
         displayName = ECSTRING(csw,metis_tube);
@@ -298,6 +325,9 @@ class CfgWeapons {
             deploy = "rhs_Kornet_9M133_2_msv";
         };
         class WeaponSlotsInfo: WeaponSlotsInfo {
+            class MuzzleSlot {
+                iconScale = 0.1;
+            };
             mass = 600;
         };
         displayName = ECSTRING(csw,kornet_launcher);
@@ -306,5 +336,10 @@ class CfgWeapons {
         model = QPATHTOEF(apl,ACE_CSW_Bag.p3d);
         modes[] = {};
         picture = "\rhsafrf\addons\rhs_heavyweapons\data\ico\rhs_Kornet_9M133_2_msv_ca.paa";
+    };
+
+    class rhs_uniform_flora;
+    class rhs_uniform_df15: rhs_uniform_flora {
+        ACE_GForceCoef = 0.8;
     };
 };

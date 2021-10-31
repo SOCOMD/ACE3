@@ -323,6 +323,30 @@
             <Chinese>成為隊長</Chinese>
             <Turkish>Lider ol</Turkish>
         </Key>
+        <Key ID="STR_ACE_Interaction_RenameGroup">
+            <English>Rename Group</English>
+            <Japanese>グループ名変更</Japanese>
+            <French>Renommer le groupe</French>
+            <Russian>Переименовать группу</Russian>
+            <German>Gruppe umbenennen</German>
+            <Polish>Zmień nazwę grupy</Polish>
+        </Key>
+        <Key ID="STR_ACE_Interaction_RenameGroupAlreadyExists">
+            <English>This group name is already in use.</English>
+            <Japanese>このグループ名は既に使われています。</Japanese>
+            <French>Ce nom de groupe est déjà attribué.</French>
+            <Russian>Данное имя группы уже используется.</Russian>
+            <German>Dieser Gruppenname ist bereits in Verwendung.</German>
+            <Polish>Ta nazwa grupy jest już w użyciu.</Polish>
+        </Key>
+        <Key ID="STR_ACE_Interaction_RenameGroupInput">
+            <English>NEW GROUP NAME:</English>
+            <Japanese>新しいグループ名:</Japanese>
+            <French>NOUVEAU NOM DE GROUPE :</French>
+            <Russian>НОВОЕ ИМЯ ГРУППЫ</Russian>
+            <German>NEUER GRUPPENNAME:</German>
+            <Polish>NOWA NAZWA GRUPY:</Polish>
+        </Key>
         <Key ID="STR_ACE_Interaction_Dance">
             <English>DANCE!</English>
             <German>TANZEN!</German>
@@ -847,6 +871,7 @@
             <Korean>키 할당하기</Korean>
             <Chinesesimp>编辑按键</Chinesesimp>
             <Chinese>編輯按鍵</Chinese>
+            <Turkish>Modifiye Tuşu</Turkish>
         </Key>
         <Key ID="STR_ACE_Interaction_NotInRange">
             <English>Not in Range</English>
@@ -992,7 +1017,7 @@
             <Hungarian>Csapatkezelés engedélyezése</Hungarian>
             <Portuguese>Habilitar gestão de equipes</Portuguese>
             <Italian>Abilità Management Squadra</Italian>
-            <Japanese>チーム管理を使う</Japanese>
+            <Japanese>チーム管理の有効化</Japanese>
             <Korean>팀 설정 활성화</Korean>
             <Chinesesimp>启用小队管理</Chinesesimp>
             <Chinese>啟用小隊管理</Chinese>
@@ -1009,7 +1034,7 @@
             <Hungarian>A játékosoknak engedélyezve legyen a csapatkezelő menü? Alapértelmezett: Igen</Hungarian>
             <Portuguese>Devem os jogadores ter permissão de usar o menu de gestão de equipes? Padrão: Sim</Portuguese>
             <Italian>Possono i giocatori usare il Menù Managment Squadra? Default: Si</Italian>
-            <Japanese>プレイヤーがチーム管理メニューを使えるようにしますか? 標準: 有効化</Japanese>
+            <Japanese>プレイヤーがチーム管理メニューを使えるかどうかを設定します。標準: 有効化</Japanese>
             <Korean>플레이어들이 팀 설정하는 것을 허락합니까? 기본설정: 예</Korean>
             <Chinesesimp>允许玩家使用小队管理选单? 预设: 是</Chinesesimp>
             <Chinese>允許玩家使用小隊管理選單? 預設: 是</Chinese>
@@ -1107,6 +1132,7 @@
             <Korean>탄창 건네기</Korean>
             <Chinesesimp>给予弹匣</Chinesesimp>
             <Chinese>給予彈匣</Chinese>
+            <Turkish>Sarjörleri birleştir</Turkish>
         </Key>
         <Key ID="STR_ACE_Interaction_PassMagazinePrimary">
             <English>Primary magazine</English>
@@ -1165,7 +1191,7 @@
             <Italian>Mostra interazione "passa caricatore"</Italian>
             <Spanish>Mostrar "Pasar cargador" en el menú de interacción</Spanish>
             <French>Montrer l'interaction "Passer un chargeur"</French>
-            <Japanese>"弾倉を渡す"をインタラクションに表示する</Japanese>
+            <Japanese>"弾倉を渡す"をインタラクションに表示</Japanese>
             <Korean>'탄창 건네기'를 상호작용에서 보여줌</Korean>
             <Chinesesimp>显示"给予弹匣"互动动作</Chinesesimp>
             <Chinese>顯示"給予彈匣"互動動作</Chinese>
@@ -1184,6 +1210,7 @@
             <French>Retirer le corps</French>
             <Czech>Vytáhnout tělo</Czech>
             <Spanish>Sacar cuerpo</Spanish>
+            <Turkish>Vücudu dışarı çıkart</Turkish>
         </Key>
         <Key ID="STR_ACE_Interaction_SmashWindshield">
             <English>Smash windshield</English>
@@ -1198,6 +1225,58 @@
             <Portuguese>Quebrar pára-brisa</Portuguese>
             <Chinese>踹開擋風玻璃</Chinese>
             <Spanish>Romper parabrisas</Spanish>
+            <Turkish>Ön camı parçala</Turkish>
+        </Key>
+        <Key ID="STR_ACE_Interaction_weaponAttachmentsAttach">
+            <English>Attach %1</English>
+            <Russian>Установить %1</Russian>
+            <Japanese>%1 を取り付け</Japanese>
+            <Spanish>Acoplar %1</Spanish>
+            <French>Fixer %1</French>
+            <Polish>Przyczep %1</Polish>
+            <German>Befestige %1</German>
+        </Key>
+        <Key ID="STR_ACE_Interaction_weaponAttachmentsDetach">
+            <English>Detach %1</English>
+            <Russian>Снять %1</Russian>
+            <Japanese>%1 を外す</Japanese>
+            <Spanish>Desacoplar %1</Spanish>
+            <French>Retirer %1</French>
+            <Polish>Odczep %1</Polish>
+            <German>Löse %1</German>
+        </Key>
+        <Key ID="STR_ACE_Interaction_weaponAttachments_Description">
+            <English>Enables attach/detach weapon attachment actions for current weapon.</English>
+            <Russian>Включает действия Установить/Снять для приспособлений текущего оружия.</Russian>
+            <Japanese>インタラクションから使用中の武器に対してのアタッチメント取り外しを可能にします。</Japanese>
+            <Spanish>Activar acciones de acoplar/desacoplar accesorios para el arma actual.</Spanish>
+            <French>Cette option permet de fixer/retirer des accessoires d'arme à partir du menu d'interaction personnel.</French>
+            <Polish>Włącza akcje przyczepienia/odczepienia dodatków dla obecnej broni</Polish>
+            <German>Aktiviert das Befestigen/Lösen von Waffenausätzen an der aktuellen Waffe.</German>
+        </Key>
+        <Key ID="STR_ACE_Interaction_enableRenameGroup_DisplayName">
+            <English>Allow group rename</English>
+            <Japanese>グループ名変更を許可</Japanese>
+            <French>Permettre le renommage de groupe</French>
+            <Russian>Разрешить переименование группы</Russian>
+            <German>Erlaube das Umbenennen der Gruppe</German>
+            <Polish>Zezwól na zmianę nazwy grupy</Polish>
+        </Key>
+        <Key ID="STR_ACE_Interaction_enableRenameGroup_Description">
+            <English>Allows a group leader to rename their group if the name is not already taken.</English>
+            <Japanese>グループ リーダーによるグループ名の変更を許可します。</Japanese>
+            <French>Cette option permet aux chefs de groupe de modifier le nom de leur groupe.</French>
+            <Russian>Разрешить лидеру группы её переименование, если имя не занято.</Russian>
+            <German>Erlaube Gruppenführer das Umbenennen Ihrer Gruppe, wenn der Name nicht bereits vergeben ist.</German>
+            <Polish>Pozwala liderowi grupy na zmianę jej nazwy, jeżeli ta nazwa nie jest już w użyciu.</Polish>
+        </Key>
+        <Key ID="STR_ACE_Interaction_interactWithTerrainObjects_Description">
+            <English>Warning: can cause some objects to collide with others.</English>
+            <Russian>Внимание: может вызвать отталкивание некоторых объектов друг от друга.</Russian>
+            <French>Attention : certains objets peuvent entrer en collision avec d'autres.</French>
+            <Japanese>警告: 一部のオブジェクトが干渉する可能性があります。</Japanese>
+            <German>Achtung: einige Objekte könnten mit anderen Kollidieren.</German>
+            <Polish>Uwaga: niektóre obiekty mogą kolidować z innymi.</Polish>
         </Key>
     </Package>
 </Project>

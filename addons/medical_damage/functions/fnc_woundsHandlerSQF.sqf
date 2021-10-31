@@ -122,8 +122,10 @@ private _bodyPartVisParams = [_unit, false, false, false, false]; // params arra
                 _critialDamage = true;
             };
             if ([_unit, _bodyPartNToAdd, _bodyPartDamage, _woundDamage] call FUNC(determineIfFatal)) then {
-                TRACE_1("determineIfFatal returned true",_woundDamage);
-                [QEGVAR(medical,FatalInjury), _unit] call CBA_fnc_localEvent;
+                if (!isPlayer _unit || {random 1 < EGVAR(medical,deathChance)}) then {
+                    TRACE_1("determineIfFatal returned true",_woundDamage);
+                    [QEGVAR(medical,FatalInjury), _unit] call CBA_fnc_localEvent;
+                };
             };
 
             #ifdef DEBUG_MODE_FULL
@@ -131,15 +133,28 @@ private _bodyPartVisParams = [_unit, false, false, false, false]; // params arra
             #endif
 
             switch (true) do {
-            case (_causeFracture && {EGVAR(medical,fractures) > 0} && {_bodyPartNToAdd > 1} && {_woundDamage > FRACTURE_DAMAGE_THRESHOLD}): {
-                    TRACE_1("limb fracture",_bodyPartNToAdd);
+                case (
+                    _causeFracture
+                    && {EGVAR(medical,fractures) > 0}
+                    && {_bodyPartNToAdd > 1}
+                    && {_woundDamage > FRACTURE_DAMAGE_THRESHOLD}
+                    && {random 1 < EGVAR(medical,fractureChance)}
+                ): {
                     private _fractures = GET_FRACTURES(_unit);
                     _fractures set [_bodyPartNToAdd, 1];
                     _unit setVariable [VAR_FRACTURES, _fractures, true];
-                    [QEGVAR(medical,fracture), [_unit, _bodyPartNToAdd]] call CBA_fnc_localEvent; // local event for fracture
+
+                    [QEGVAR(medical,fracture), [_unit, _bodyPartNToAdd]] call CBA_fnc_localEvent;
+                    TRACE_1("Limb fracture",_bodyPartNToAdd);
+
                     _updateDamageEffects = true;
                 };
-            case (_causeLimping && {EGVAR(medical,limping) > 0} && {_bodyPartNToAdd > 3} && {_woundDamage > LIMPING_DAMAGE_THRESHOLD}): {
+                case (
+                    _causeLimping
+                    && {EGVAR(medical,limping) > 0}
+                    && {_bodyPartNToAdd > 3}
+                    && {_woundDamage > LIMPING_DAMAGE_THRESHOLD}
+                ): {
                     _updateDamageEffects = true;
                 };
             };

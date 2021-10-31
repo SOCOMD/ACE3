@@ -80,6 +80,7 @@ class CfgVehicles {
         scope = 1;
         scopeCurator = 1;
         model = QPATHTOF(data\nozzle.p3d);
+        destrType = "DestructNo";
     };
 
     class All;
@@ -358,6 +359,11 @@ class CfgVehicles {
         GVAR(canReceive) = 0;
     };
 
+    class UGV_02_Base_F: Tank_F {
+        // ED-1D and ED-1E are electrical
+        GVAR(canReceive) = 0;
+    };
+
     class UAV: Plane {};
 
     class UAV_02_base_F: UAV {
@@ -475,6 +481,11 @@ class CfgVehicles {
         GVAR(fuelCargo) = REFUEL_INFINITE_FUEL;
     };
     class Land_FuelStation_01_pump_malevil_F: House_F {
+        transportFuel = 0; //50k
+        GVAR(hooks)[] = {{0, 0.4, -0.5}, {0, -0.4, -0.5}};
+        GVAR(fuelCargo) = REFUEL_INFINITE_FUEL;
+    };
+    class Land_FuelStation_03_pump_F: House_F { // Enoch
         transportFuel = 0; //50k
         GVAR(hooks)[] = {{0, 0.4, -0.5}, {0, -0.4, -0.5}};
         GVAR(fuelCargo) = REFUEL_INFINITE_FUEL;

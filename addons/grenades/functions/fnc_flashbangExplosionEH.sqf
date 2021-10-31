@@ -47,7 +47,7 @@ private _affected = (ASLtoAGL _grenadePosASL) nearEntities ["CAManBase", 20];
 _affected = _affected - [ACE_player];
 {
     if (local _x && {alive _x}) then {
-        private _strength = 1 - (((getPosASL _x) vectorDistance _grenadePosASL) min 20) / 20;
+        private _strength = 1 - (((eyePos _x) vectorDistance _grenadePosASL) min 20) / 20;
 
         TRACE_3("FlashBangEffect Start",_x,((getPosASL _x) vectorDistance _grenadePosASL),_strength);
 
@@ -55,9 +55,9 @@ _affected = _affected - [ACE_player];
 
         _x setSkill (skill _x / 50);
 
-        if (_strength > 0.2) then {
-            _x setVectorDir ((getPosASL _x) vectorDiff _grenadePosASL);
-        };
+        // Make AI try to look away
+        private _dirToFlash = _x getDir _grenadePosASL;
+        _x setDir (_dirToFlash + linearConversion [0.2, 1, _strength, 40, 135] * selectRandom [-1, 1]);
 
         [{
             params ["_unit"];
@@ -74,7 +74,7 @@ _affected = _affected - [ACE_player];
 
 // Affect local player, independently of distance
 if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
-    if ((getNumber (configFile >> "CfgVehicles" >> (typeOf ACE_player) >> "isPlayableLogic")) == 1) exitWith {
+    if ((getNumber (configOf ACE_player >> "isPlayableLogic")) == 1) exitWith {
         TRACE_1("skipping playable logic",typeOf ACE_player); // VirtualMan_F (placeable logic zeus / spectator)
     };
     // Do effects for player
@@ -122,8 +122,10 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
 
     // Blind player
     if (_strength > 0.1) then {
+        private _blend = [[1,1,1,0], [0.3,0.3,0.3,1]] select EGVAR(common,epilepsyFriendlyMode);
+
         GVAR(flashbangPPEffectCC) ppEffectEnable true;
-        GVAR(flashbangPPEffectCC) ppEffectAdjust [1,1,(0.8 + _strength) min 1,[1,1,1,0],[0,0,0,1],[0,0,0,0]];
+        GVAR(flashbangPPEffectCC) ppEffectAdjust [1, 1, (0.8 + _strength) min 1, _blend, [0,0,0,1], [0,0,0,0]];
         GVAR(flashbangPPEffectCC) ppEffectCommit 0.01;
 
         //PARTIALRECOVERY - start decreasing effect over time
@@ -140,8 +142,11 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
         }, [], 17 * _strength] call CBA_fnc_waitAndExecute;
     };
 
-    if (_strength > 0.2) then {
-        ACE_player setVectorDir (_eyePos vectorDiff _grenadePosASL);
-    };
+    // Make player flinch
+    if (_strength <= 0.2) exitWith {};
+    private _minFlinch = linearConversion [0.2, 1, _strength, 0, 60, true];
+    private _maxFlinch = linearConversion [0.2, 1, _strength, 0, 95, true];
+    private _flinch    = (_minFlinch + random (_maxFlinch - _minFlinch)) * selectRandom [-1, 1];
+    ACE_player setDir (getDir ACE_player + _flinch);
 };
 true

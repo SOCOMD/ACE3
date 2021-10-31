@@ -36,6 +36,11 @@ _patient setVariable [VAR_PAIN, 0, true];
 _patient setVariable [VAR_BLOOD_VOL, DEFAULT_BLOOD_VOLUME, true];
 
 // Tourniquets
+{
+    if (_x != 0) then {
+        [_patient, "ACE_tourniquet"] call EFUNC(common,addToInventory);
+    };
+} forEach GET_TOURNIQUETS(_patient);
 _patient setVariable [VAR_TOURNIQUET, DEFAULT_TOURNIQUET_VALUES, true];
 _patient setVariable [QGVAR(occludedMedications), nil, true];
 
@@ -67,7 +72,7 @@ if IS_UNCONSCIOUS(_patient) then {
     [QEGVAR(medical,WakeUp), _patient] call CBA_fnc_localEvent;
     _state = GET_SM_STATE(_patient);
     TRACE_1("after WakeUp",_state);
-    if IS_UNCONSCIOUS(_patient) then { ERROR_1("fullheal [unit %1][state %2] failed to wake up patient",_patient,_state); };
+    if IS_UNCONSCIOUS(_patient) then { ERROR_2("fullheal [unit %1][state %2] failed to wake up patient",_patient,_state); };
 };
 
 // Generic medical admin
