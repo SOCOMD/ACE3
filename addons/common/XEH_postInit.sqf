@@ -26,7 +26,8 @@
 ["blockEngine", false, ["ACE_Refuel"]] call FUNC(statusEffect_addType);
 ["blockThrow", false, ["ACE_Attach", "ACE_concertina_wire", "ACE_dragging", "ACE_Explosives", "ACE_Ladder", "ACE_rearm", "ACE_refuel", "ACE_Sandbag", "ACE_Trenches", "ACE_tripod"]] call FUNC(statusEffect_addType);
 ["setHidden", true, ["ace_unconscious"]] call FUNC(statusEffect_addType);
-["blockRadio", false, [QEGVAR(captives,Handcuffed), QEGVAR(captives,Surrendered), "ace_unconscious"]] call FUNC(statusEffect_addType);
+["blockHandRadio", false, [QEGVAR(captives,Handcuffed), QEGVAR(captives,Surrendered), "ace_unconscious"]] call FUNC(statusEffect_addType);
+["blockRadio", false, ["ace_unconscious"]] call FUNC(statusEffect_addType);
 
 [QGVAR(forceWalk), {
     params ["_object", "_set"];
@@ -72,6 +73,20 @@
     };
 }] call CBA_fnc_addEventHandler;
 
+[QGVAR(blockHandRadio), {
+    params ["_object", "_set"];
+    TRACE_2("blockHandRadio EH",_object,_set);
+    if (_object isEqualTo ACE_Player && {_set > 0}) then {
+        call FUNC(endRadioTransmission);
+    };
+    if (isClass (configFile >> "CfgPatches" >> "task_force_radio")) then {
+        _object setVariable ["tf_unable_to_use_radio", _set > 0, true];
+    };
+    if (isClass (configFile >> "CfgPatches" >> "acre_main")) then {
+        _object setVariable g["acre_sys_core_isDisabledRadio", _set > 0, true];
+    };
+}] call CBA_fnc_addEventHandler;
+
 [QGVAR(blockRadio), {
     params ["_object", "_set"];
     TRACE_2("blockRadio EH",_object,_set);
@@ -82,7 +97,7 @@
         _object setVariable ["tf_unable_to_use_radio", _set > 0, true];
     };
     if (isClass (configFile >> "CfgPatches" >> "acre_main")) then {
-        _object setVariable ["acre_sys_core_isDisabledRadio", _set > 0, true];
+        _object setVariable ["acre_sys_core_isDisabled", _set > 0, true];
     };
 }] call CBA_fnc_addEventHandler;
 
