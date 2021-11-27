@@ -211,7 +211,7 @@
 {% endif %}
 
 {% if include.component == "killtracker" %}
-`ace_medical`
+`ace_common`
 {% endif %}
 
 {% if include.component == "laser" %}
@@ -452,10 +452,6 @@
 
 {% if include.component == "smallarms" %}
 `ace_common`
-{% endif %}
-
-{% if include.component == "socomd_arsenal" %}
-`ace_common`, `A3_Ui_F_Data`, `A3_3DEN`, `A3_Ui_F_Curator`
 {% endif %}
 
 {% if include.component == "spectator" %}

@@ -15,7 +15,7 @@
  * Public: No
  */
 
-params ["_grenadePosASL","_count"];
+params ["_grenadePosASL"];
 TRACE_1("params",_grenadePosASL);
 
 // Create flash to illuminate environment
@@ -47,28 +47,42 @@ private _affected = (ASLtoAGL _grenadePosASL) nearEntities ["CAManBase", 20];
 _affected = _affected - [ACE_player];
 {
     if (local _x && {alive _x}) then {
-        private _strength = 1 - (((eyePos _x) vectorDistance _grenadePosASL) min 20) / 20;
+        private _unit = _x;
+        private _strength = 1 - (((eyePos _unit) vectorDistance _grenadePosASL) min 20) / 20;
 
-        TRACE_3("FlashBangEffect Start",_x,((getPosASL _x) vectorDistance _grenadePosASL),_strength);
+        TRACE_3("FlashBangEffect Start",_unit,((getPosASL _unit) vectorDistance _grenadePosASL),_strength);
 
-        [_x, true] call EFUNC(common,disableAI);
-
-        _x setSkill (skill _x / 50);
+        [_unit, true] call EFUNC(common,disableAI);
 
         // Make AI try to look away
-        private _dirToFlash = _x getDir _grenadePosASL;
-        _x setDir (_dirToFlash + linearConversion [0.2, 1, _strength, 40, 135] * selectRandom [-1, 1]);
+        private _dirToFlash = _unit getDir _grenadePosASL;
+        _unit setDir (_dirToFlash + linearConversion [0.2, 1, _strength, 40, 135] * selectRandom [-1, 1]);
 
-        [{
-            params ["_unit"];
+        private _flashReactionDebounce = _unit getVariable [QGVAR(flashReactionDebounce), 0];
+        _unit setVariable [QGVAR(flashReactionDebounce), _flashReactionDebounce max (CBA_missionTime + (7 * _strength))];
+        if (_flashReactionDebounce < CBA_missionTime) then {
+            // Not used interally but could be useful for other mods
+            _unit setVariable [QGVAR(flashStrength), _strength, true];
+            {
+                _unit setSkill [_x, (_unit skill _x) / 50];
+            } forEach SUBSKILLS;
+            [{
+                params ["_unit"];
+                CBA_missiontime >= _unit getVariable [QGVAR(flashReactionDebounce), 0]
+            },{
+                params ["_unit"];
 
-            //Make sure we don't enable AI for unconscious units
-            if !(_unit getVariable ["ace_isUnconscious", false]) then {
-                [_unit, false] call EFUNC(common,disableAI);
-            };
+                _unit setVariable [QGVAR(flashStrength), 0, true];
 
-            _unit setSkill (skill _unit * 50);
-        }, [_x], 7 * _strength] call CBA_fnc_waitAndExecute;
+                // Make sure we don't enable AI for unconscious units
+                if !(_unit getVariable ["ace_isUnconscious", false]) then {
+                    [_unit, false] call EFUNC(common,disableAI);
+                };
+                {
+                    _unit setSkill [_x, (_unit skill _x) * 50];
+                } forEach SUBSKILLS;
+            }, [_unit]] call CBA_fnc_waitUntilAndExecute;
+        };
     };
 } count _affected;
 
@@ -103,8 +117,8 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
     };
 
     // add ace_medical pain effect:
-    if (isClass (configFile >> "CfgPatches" >> "ACE_Medical") && {_strength > 0.85}) then {
-        [ACE_player, _strength / 15] call EFUNC(medical,adjustPainLevel);
+    if (isClass (configFile >> "CfgPatches" >> "ACE_Medical") && {_strength > 0.1}) then {
+        [ACE_player, _strength / 2] call EFUNC(medical,adjustPainLevel);
     };
 
     // Effect on vision has a wider range, with a higher falloff
@@ -121,7 +135,7 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
     };
 
     // Blind player
-    if (_strength > 0.1 && _count < 1) then {
+    if (_strength > 0.1) then {
         private _blend = [[1,1,1,0], [0.3,0.3,0.3,1]] select EGVAR(common,epilepsyFriendlyMode);
 
         GVAR(flashbangPPEffectCC) ppEffectEnable true;
@@ -143,7 +157,7 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
     };
 
     // Make player flinch
-    if (_strength <= 0.9 && _count > 1) exitWith {};
+    if (_strength <= 0.2) exitWith {};
     private _minFlinch = linearConversion [0.2, 1, _strength, 0, 60, true];
     private _maxFlinch = linearConversion [0.2, 1, _strength, 0, 95, true];
     private _flinch    = (_minFlinch + random (_maxFlinch - _minFlinch)) * selectRandom [-1, 1];

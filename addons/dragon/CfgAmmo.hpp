@@ -37,6 +37,8 @@ class CfgAmmo {
         
         EGVAR(vehicle_damage,incendiary) = 1.0;
 
+        EGVAR(vehicle_damage,incendiary) = 1.0;
+
         class ace_missileguidance {
             minDeflection = 0;
             maxDeflection = 0;
