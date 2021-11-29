@@ -487,11 +487,6 @@ class CfgVehicles {
         };
     };
 
-    class NVG_TargetBase: All {
-        class NVGMarker {
-            maxLifetime = "8 * 60 * 60";
-        };
-    };
 
     class NVG_TargetBase: All {
         class NVGMarker {
