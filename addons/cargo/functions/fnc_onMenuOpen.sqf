@@ -38,8 +38,11 @@ if (GVAR(interactionParadrop)) then {
     };
 
     private _loaded = GVAR(interactionVehicle) getVariable [QGVAR(loaded), []];
+    private _cargo = getVehicleCargo GVAR(interactionVehicle);
+    private _list = [_cargo, 0, _loaded] call CBA_fnc_insert;
     private _ctrl = _display displayCtrl 100;
     private _label = _display displayCtrl 2;
+    private _vivLabel = _display displayCtrl 3;
 
     lbClear _ctrl;
     {
@@ -52,7 +55,8 @@ if (GVAR(interactionParadrop)) then {
         };
 
         true
-    } count _loaded;
+    } count _list;
 
     _label ctrlSetText format[localize LSTRING(labelSpace), [GVAR(interactionVehicle)] call DFUNC(getCargoSpaceLeft)];
+    _vivLabel ctrlSetText ([GVAR(interactionVehicle)] call DFUNC(getViVCargoSpaceLeft));
 }, 0, []] call CBA_fnc_addPerFrameHandler;

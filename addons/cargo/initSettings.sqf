@@ -42,3 +42,11 @@
     false,
     {[QGVAR(enableRename), _this, true] call EFUNC(common,cbaSettings_settingChanged)}
 ] call CBA_fnc_addSetting;
+[
+    QGVAR(enableVIVCargo), "CHECKBOX",
+    [LSTRING(ModuleSettings_enableVIVCargo), LSTRING(ModuleSettings_enableVIVCargo_Description)],
+    [LELSTRING(OptionsMenu,CategoryLogistics), LLSTRING(openMenu)],
+    true,
+    false,
+    {[QGVAR(enableVIVCargo), _this, true] call EFUNC(common,cbaSettings_settingChanged)}
+] call CBA_fnc_addSetting;

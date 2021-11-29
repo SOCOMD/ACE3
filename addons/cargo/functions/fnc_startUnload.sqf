@@ -20,7 +20,9 @@ disableSerialization;
 private _display = uiNamespace getVariable QGVAR(menuDisplay);
 if (isNil "_display") exitWith {};
 
-private _loaded = GVAR(interactionVehicle) getVariable [QGVAR(loaded), []];
+private _list = GVAR(interactionVehicle) getVariable [QGVAR(loaded), []];
+private _cargo = getVehicleCargo GVAR(interactionVehicle);
+private _loaded = [_cargo, 0, _list] call CBA_fnc_insert;
 if (_loaded isEqualTo []) exitWith {};
 
 private _ctrl = _display displayCtrl 100;
@@ -29,7 +31,6 @@ private _selected = (lbCurSel _ctrl) max 0;
 
 if (count _loaded <= _selected) exitWith {};
 private _item = _loaded select _selected; // This can be an object or a classname string
-
 if (GVAR(interactionParadrop)) exitWith {
     // If drop time is 0 don't show a progress bar
     if (GVAR(paradropTimeCoefficent) == 0) exitWith {
@@ -68,20 +69,19 @@ if (GVAR(interactionParadrop)) exitWith {
 // Start progress bar - normal ground unload
 if ([_item, GVAR(interactionVehicle), ACE_player] call FUNC(canUnloadItem)) then {
     private _size = [_item] call FUNC(getSizeItem);
-
     [
         GVAR(loadTimeCoefficient) * _size,
-        [_item, GVAR(interactionVehicle), ACE_player],
+        [_item, GVAR(interactionVehicle), ACE_player, _loaded],
         {TRACE_1("unload finish",_this); ["ace_unloadCargo", _this select 0] call CBA_fnc_localEvent},
         {TRACE_1("unload fail",_this);},
         localize LSTRING(UnloadingItem),
         {
-            (_this select 0) params ["_item", "_target", "_player"];
+            (_this select 0) params ["_item", "_target", "_player","_loaded"];
 
             (alive _target)
             && {locked _target < 2}
             && {([_player, _target] call EFUNC(interaction,getInteractionDistance)) < MAX_LOAD_DISTANCE}
-            && {_item in (_target getVariable [QGVAR(loaded), []])}
+            && {_item in _loaded}
         },
         ["isNotSwimming"]
     ] call EFUNC(common,progressBar);
