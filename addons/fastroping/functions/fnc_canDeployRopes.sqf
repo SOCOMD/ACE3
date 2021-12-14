@@ -21,8 +21,8 @@ params ["_vehicle", "_player", "_ropeClass", ["_defaultOption", false]];
 
 private _config = configOf _vehicle;
 
-(driver _vehicle != _player) &&
-{getPos _vehicle select 2 > 2} && {
+// (driver _vehicle != _player) && // removing restriction for pilot
+(getPos _vehicle select 2 > 2) && {
     private _enabled = getNumber (_config >> QGVAR(enabled));
     _enabled == 1 || {_enabled == 2 && {!(isNull (_vehicle getVariable [QGVAR(FRIES), objNull]))}}
 } && {
