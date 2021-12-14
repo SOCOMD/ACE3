@@ -1,6 +1,7 @@
 ---
 layout: wiki
 title: Overheating
+component: overheating
 description: Weapon temperature and jamming, barrel swapping.
 group: feature
 category: realism
@@ -66,19 +67,3 @@ Jams can be cleared in the following ways:
 
 - After a firefight unload closed bolt firearms (most rifles) until the barrel temperature has gone down to less than 180°C (two sections or less on the bar).
 - Clear failure to fire jams quickly
-
-### 2.4 Cooling your weapon
-
-- Weapons and spare barrels will cool off over time.
-- Cooling speed of weapons in increased in windy or rainy weather, and when swimming.
-- If ACE Field Rations is loaded then weapons can be cooled with canteens, water bottles, or other beverage items. This does not require the Field Rations system to be enabled.
-- If ACE Field Rations is enabled then weapons can also be cooled with the same water sources used to refill canteens and water bottles.
-
-### 2.5 Avoiding cookoffs
-
-- After a firefight unload closed bolt firearms (most rifles) until the barrel temperature has gone down to less than 180°C (two sections or less on the bar).
-- Clear failure to fire jams quickly
-
-## 3. Dependencies
-
-{% include dependencies_list.md component="overheating" %}
