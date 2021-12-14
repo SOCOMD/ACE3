@@ -33,23 +33,27 @@ if ((count _emptyPosAGL) != 3) exitWith {
     false
 };
 
-private _loaded = _vehicle getVariable [QGVAR(loaded), []];
+private _list = _vehicle getVariable [QGVAR(loaded), []];
+private _itemIsObject = _item isEqualType objNull;
+private _cargo = getVehicleCargo _vehicle;
+private _loaded = [_cargo, 0, _list] call CBA_fnc_insert;
 
 if !(_item in _loaded) exitWith {
     ERROR_3("Tried to unload item [%1] not in vehicle[%2] cargo[%3]", _item, _vehicle, _loaded);
     false
 };
+if (_item in _list) then {
+    _list deleteAt (_list find _item);
+    _vehicle setVariable [QGVAR(loaded), _list, true];
 
-_loaded deleteAt (_loaded find _item);
-_vehicle setVariable [QGVAR(loaded), _loaded, true];
-
-private _space = [_vehicle] call FUNC(getCargoSpaceLeft);
-private _itemSize = [_item] call FUNC(getSizeItem);
-_vehicle setVariable [QGVAR(space), (_space + _itemSize), true];
-
+    private _space = [_vehicle] call FUNC(getCargoSpaceLeft);
+    private _itemSize = [_item] call FUNC(getSizeItem);
+    _vehicle setVariable [QGVAR(space), (_space + _itemSize), true];
+};
 private _object = _item;
 if (_object isEqualType objNull) then {
     detach _object;
+    
     // hideObjectGlobal must be executed before setPos to ensure light objects are rendered correctly
     // do both on server to ensure they are executed in the correct order
     [QGVAR(serverUnload), [_object, _emptyPosAGL]] call CBA_fnc_serverEvent;
