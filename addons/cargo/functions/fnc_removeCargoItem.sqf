@@ -21,23 +21,19 @@
 params ["_item", "_vehicle", ["_amount", 1]];
 TRACE_3("params",_item,_vehicle,_amount);
 
-private _list = _vehicle getVariable [QGVAR(loaded), []];
-private _itemIsObject = _item isEqualType objNull;
-private _cargo = getVehicleCargo _vehicle;
-private _loaded = [_cargo, 0, _list] call CBA_fnc_insert;
+private _loaded = _vehicle getVariable [QGVAR(loaded), []];
 
 private _addedSpace = 0;
 private _itemClass = _item;
 private _itemsRemoved = 0;
-private _continue = if (_itemIsObject) then {
+
+private _continue = if (_item isEqualType objNull) then {
     if !(_item in _loaded) exitWith {false};
-    if (_item in _list) then {
-        _addedSpace = [_item] call FUNC(getSizeItem);
-        _loaded deleteAt (_loaded find _item);
-        _itemClass = typeOf _item;
-        deleteVehicle _item;
-        _itemsRemoved = 1;
-    };
+    _addedSpace = [_item] call FUNC(getSizeItem);
+    _loaded deleteAt (_loaded find _item);
+    _itemClass = typeOf _item;
+    deleteVehicle _item;
+    _itemsRemoved = 1;
     true
 } else {
     {
@@ -53,15 +49,17 @@ private _continue = if (_itemIsObject) then {
             if (_x isEqualType objNull) then {
                 deleteVehicle _x;
             };
-            _list set [_forEachIndex, nil];
+            _loaded set [_forEachIndex, nil];
         };
-    } forEach _list;
+    } forEach _loaded;
 
-    FILTER(_list,!isNil "_x");
+    FILTER(_loaded,!isNil "_x");
     true
 };
+
 if (!_continue) exitWith {0};
-_vehicle setVariable [QGVAR(loaded), _list, true];
+
+_vehicle setVariable [QGVAR(loaded), _loaded, true];
 
 private _space = [_vehicle] call FUNC(getCargoSpaceLeft);
 _vehicle setVariable [QGVAR(space), _space + _addedSpace, true];

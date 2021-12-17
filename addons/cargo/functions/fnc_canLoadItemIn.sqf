@@ -28,10 +28,6 @@ if (_item isEqualType objNull && {{alive _x && {getText (configOf _x >> "simulat
 
 private _itemSize = [_item] call FUNC(getSizeItem);
 private _validItem = false;
-private _canViV = false;
-if(GVAR(enableVIVCargo) && _item isEqualType objNull && _vehicle isEqualType objNull) then {
-    _canViV = ((_vehicle canVehicleCargo _item) select 0);
-};
 if (_item  isEqualType "") then {
     _validItem =
         isClass (configFile >> "CfgVehicles" >> _item) &&
@@ -41,9 +37,9 @@ if (_item  isEqualType "") then {
         (alive _item) &&
         {_ignoreInteraction || {([_item, _vehicle] call EFUNC(interaction,getInteractionDistance)) < MAX_LOAD_DISTANCE}};
 };
-_canViV ||
-(_validItem &&
+
+_validItem &&
 {_itemSize > 0} &&
 {alive _vehicle} &&
 {_itemSize <= ([_vehicle] call FUNC(getCargoSpaceLeft))} &&
-{locked _vehicle < 2})
+{locked _vehicle < 2}

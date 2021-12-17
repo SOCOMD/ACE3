@@ -21,9 +21,7 @@ params ["_item", "_vehicle", ["_unloader", objNull]];
 TRACE_2("params",_item,_vehicle);
 
 private _loaded = _vehicle getVariable [QGVAR(loaded), []];
-private _cargo = getVehicleCargo _vehicle;
-private _list = [_cargo, 0, _loaded] call CBA_fnc_insert;
-if !(_item in _list) exitWith {false};
+if !(_item in _loaded) exitWith {false};
 
 private _itemClass = if (_item isEqualType "") then {_item} else {typeOf _item};
 

@@ -45,19 +45,7 @@ class GVAR(menu) {
             y = "2.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
             w = "13 * (((safezoneW / safezoneH) min 1.2) / 40)";
             h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-            style = ST_LEFT;
-            colorText[] = {1, 1, 1.0, 0.9};
-            colorBackground[] = {0,0,0,0};
-            SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.2)";
-            text = "";
-        };
-        class ViVSubHeader: HeaderName {
-            idc = 3;
-            x = "13 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2)";
-            y = "3.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
-            w = "13 * (((safezoneW / safezoneH) min 1.2) / 40)";
-            h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-            style = ST_LEFT;
+            style = ST_CENTER;
             colorText[] = {1, 1, 1.0, 0.9};
             colorBackground[] = {0,0,0,0};
             SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.2)";
@@ -66,7 +54,7 @@ class GVAR(menu) {
         class cargoList: ACE_gui_listBoxBase {
             idc = 100;
             x = "13.1 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2)";
-            y = "5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
+            y = "4 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
             w = "12.8 * (((safezoneW / safezoneH) min 1.2) / 40)";
             h = "10 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
             SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.7)";
@@ -83,7 +71,7 @@ class GVAR(menu) {
             text = "$STR_DISP_CANCEL";
             idc = 11;
             x = "13.1 * (((safezoneW / safezoneH) min 1.2) / 40) + (safezoneX + (safezoneW - ((safezoneW / safezoneH) min 1.2))/2)";
-            y = "13.1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
+            y = "14.1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (safezoneY + (safezoneH - (((safezoneW / safezoneH) min 1.2) / 1.2))/2)";
             w = "5 * (((safezoneW / safezoneH) min 1.2) / 40)";
             h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
             size = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";

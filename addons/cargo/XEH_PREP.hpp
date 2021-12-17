@@ -3,7 +3,6 @@ PREP(addCargoVehiclesActions);
 PREP(canLoadItemIn);
 PREP(canUnloadItem);
 PREP(getCargoSpaceLeft);
-PREP(getViVCargoSpaceLeft);
 PREP(getNameItem);
 PREP(getSizeItem);
 PREP(handleDeleted);

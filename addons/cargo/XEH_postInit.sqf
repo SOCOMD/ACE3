@@ -35,6 +35,7 @@
 ["ace_unloadCargo", {
     params ["_item", "_vehicle", ["_unloader", objNull]];
     TRACE_3("UnloadCargo EH",_item,_vehicle,_unloader);
+
     private _unloaded = [_item, _vehicle, _unloader] call FUNC(unloadItem); //returns true if sucessful
 
     // Show hint as feedback
