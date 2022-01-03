@@ -35,6 +35,55 @@ if (isNil {GVAR(allDamageTypesData) getVariable _typeOfDamage} ) then {
 private _openWounds = GET_OPEN_WOUNDS(_unit);
 private _woundID = _unit getVariable [QEGVAR(medical,lastUniqueWoundID), 1];  // Unique wound ids are not used anywhere: ToDo Remove from openWounds array
 
+if (count _openWounds == 0) exitWith {0};
+
+private _numberOfWounds = [0,0,0,0,0,0];
+private _headWounds = 0;
+private _bodyWounds = 0;
+private _leftArmWounds = 0;
+private _leftLegWounds = 0;
+private _rightArmWounds = 0;
+private _rightLegWounds = 0;
+
+// Loop through all current wounds and add up the number of unbandaged wounds on each body part.
+{
+    _x params ["", "", "_bodyPart", "_numOpenWounds", "_bloodLoss"];
+
+    if(_bloodLoss > 0) then {
+        switch (_bodyPart) do {
+            // Head
+            case 0: {
+                _headWounds = _headWounds + _numOpenWounds;
+            };
+
+            // Body
+            case 1: {
+                _bodyWounds = _bodyWounds + _numOpenWounds;
+            };
+
+            // Left Arm
+            case 2: {
+                _leftArmWounds = _leftArmWounds + _numOpenWounds;
+            };
+
+            // Right Arm
+            case 3: {
+                _rightArmWounds = _rightArmWounds + _numOpenWounds;
+            };
+
+            // Left Leg
+            case 4: {
+                _leftLegWounds = _leftLegWounds + _numOpenWounds;
+            };
+
+            // Right Leg
+            case 5: {
+                _rightLegWounds = _rightLegWounds + _numOpenWounds;
+            };
+        };
+    };
+} forEach _openWounds;
+_numberOfWounds = [_headWounds,_bodyWounds,_leftArmWounds,_rightArmWounds,_leftLegWounds,_rightLegWounds];
 TRACE_4("extension call",_bodyPart,_damage,_typeOfDamage,_woundID);
 private _extensionOutput = "ace_medical" callExtension format ["HandleDamageWounds,%1,%2,%3,%4", _bodyPart, _damage, _typeOfDamage, _woundID];
 TRACE_1("",_extensionOutput);
@@ -102,26 +151,46 @@ private _bodyPartVisParams = [_unit, false, false, false, false]; // params arra
     if (_causeLimping == 1 && {_woundDamage > LIMPING_DAMAGE_THRESHOLD} && {_bodyPartNToAdd > 3}) then {
         [_unit, true] call EFUNC(medical_engine,setLimping);
     };
+    // check if under max wounds per limb
 
-    // if possible merge into existing wounds
-    private _createNewWound = true;
-    {
-        _x params ["", "_classID", "_bodyPartN", "_oldAmountOf", "_oldBleeding", "_oldDamage", "_oldCategory"];
-        if (_woundClassIDToAdd == _classID && {_bodyPartNToAdd == _bodyPartN && {(_woundDamage < PENETRATION_THRESHOLD) isEqualTo (_oldDamage < PENETRATION_THRESHOLD)}}) then {
-            if (_oldCategory == _category) exitWith {
-                private _newAmountOf = _oldAmountOf + 1;
-                _x set [3, _newAmountOf];
-                private _newBleeding = (_oldAmountOf * _oldBleeding + _bleeding) / _newAmountOf;
-                _x set [4, _newBleeding];
-                private _newDamage = (_oldAmountOf * _oldDamage + _woundDamage) / _newAmountOf;
-                _x set [5, _newDamage];
-                _createNewWound = false;
+    if((_numberOfWounds select _bodyPartNToAdd) < QEGVAR(medical,LimbWoundLimit)) then {
+        // if possible merge into existing wounds
+        private _createNewWound = true;
+        {
+            _x params ["", "_classID", "_bodyPartN", "_oldAmountOf", "_oldBleeding", "_oldDamage", "_oldCategory"];
+            if (_woundClassIDToAdd == _classID && {_bodyPartNToAdd == _bodyPartN && {(_woundDamage < PENETRATION_THRESHOLD) isEqualTo (_oldDamage < PENETRATION_THRESHOLD)}}) then {
+                if (_oldCategory == _category) exitWith {
+                    private _newAmountOf = _oldAmountOf + 1;
+                    _x set [3, _newAmountOf];
+                    private _newBleeding = (_oldAmountOf * _oldBleeding + _bleeding) / _newAmountOf;
+                    _x set [4, _newBleeding];
+                    private _newDamage = (_oldAmountOf * _oldDamage + _woundDamage) / _newAmountOf;
+                    _x set [5, _newDamage];
+                    if(_newAmountOf > 2) then {
+                        _x set [3, 1];
+                        _x set [6, (2 min (_category + 1))];
+                        systemChat format ["New Category %", (2 min (_category + 1)) ];
+                    };
+                    _createNewWound = false;
+                };
             };
+        } forEach _openWounds;
+        if (_createNewWound) then {
+            _openWounds pushBack _x;
         };
-    } forEach _openWounds;
-
-    if (_createNewWound) then {
-        _openWounds pushBack _x;
+    } else {
+        {
+            _x params ["", "_classID", "_bodyPartN", "_oldAmountOf", "_oldBleeding", "_oldDamage", "_oldCategory"];
+            if (_woundClassIDToAdd == _classID && {_bodyPartNToAdd == _bodyPartN && {(_woundDamage < PENETRATION_THRESHOLD) isEqualTo (_oldDamage < PENETRATION_THRESHOLD)}}) then {
+                if ((_category - _oldCategory) == 1) exitWith { // make sure that there's only one level difference between them allowed to go up
+                    private _newBleeding = (_oldAmountOf * _oldBleeding + _bleeding) / _newAmountOf;
+                    _x set [4, _newBleeding];
+                    private _newDamage = (_oldAmountOf * _oldDamage + _woundDamage) / _newAmountOf;
+                    _x set [5, _newDamage];
+                    _x set [6, (_category + 1)];
+                };
+            };
+        } forEach _openWounds;
     };
 } forEach _woundsCreated;
 
