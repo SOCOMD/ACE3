@@ -42,3 +42,13 @@
     [0, 1, 1, 2, true],
     true
 ] call CBA_fnc_addSetting;
+
+
+[
+    QEGVAR(medical,LimbWoundLimit),
+    "SLIDER",
+    ["Limit number of wounds per limb", "Set the maximum number of wounds allowed per limb. By default it will try to add a new wound, then merge, then increase the size"],
+    ELSTRING(medical,Category),
+    [3, 25, 5, 0],
+    true
+] call CBA_fnc_addSetting;

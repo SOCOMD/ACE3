@@ -97,6 +97,27 @@ if (_adjustments isNotEqualTo []) then {
     };
 };
 
+// Close random small wounds after time period
+private _openWounds = GET_OPEN_WOUNDS(_unit);
+if (_openWounds isNotEqualTo []) then {
+    private _updated = false;
+    {        
+        _x params ["_class","","","","","_lastChecked"];
+        if ((_class % 10 < 1) && {(CBA_missionTime - _lastChecked) > 30}) exitWith{
+            if ((random 1) > 0.5) then {
+                _openWounds set [_forEachIndex, objNull];
+            } else {
+                _x set [5,CBA_missionTime];
+            };
+            _updated = true;
+        }; // skip if wound is not small, or was checked less than 150 seconds ago
+    } forEach _openWounds;
+    if (_updated) then {
+        _unit setVariable [VAR_OPEN_WOUNDS, _openWounds - [objNull], true];
+    };
+};
+[_unit] call EFUNC(medical_status,updateWoundBloodLoss);
+
 private _heartRate = [_unit, _hrTargetAdjustment, _deltaT, _syncValues] call FUNC(updateHeartRate);
 [_unit, _painSupressAdjustment, _deltaT, _syncValues] call FUNC(updatePainSuppress);
 [_unit, _peripheralResistanceAdjustment, _deltaT, _syncValues] call FUNC(updatePeripheralResistance);
