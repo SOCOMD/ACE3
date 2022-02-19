@@ -15,8 +15,8 @@
  * Public: No
  */
 
-params ["_grenadePosASL"];
-TRACE_1("params",_grenadePosASL);
+params ["_grenadePosASL", "_bangCount"];
+TRACE_2("params",_grenadePosASL, _bangCount);
 
 // Create flash to illuminate environment
 if (hasInterface) then {
@@ -133,34 +133,35 @@ if (hasInterface && {!isNull ACE_player} && {alive ACE_player}) then {
     if (_angleDiff > 45) then {
         _strength = _strength * ((1 - (_angleDiff - 45) / (120 - 45)) max 0);
     };
+    if(_bangCount == 0) then {
+        // Blind player
+        if (_strength > 0.1) then {
+            private _blend = [[1,1,1,0], [0.3,0.3,0.3,1]] select EGVAR(common,epilepsyFriendlyMode);
 
-    // Blind player
-    if (_strength > 0.1) then {
-        private _blend = [[1,1,1,0], [0.3,0.3,0.3,1]] select EGVAR(common,epilepsyFriendlyMode);
+            GVAR(flashbangPPEffectCC) ppEffectEnable true;
+            GVAR(flashbangPPEffectCC) ppEffectAdjust [1, 1, (0.8 + _strength) min 1, _blend, [0,0,0,1], [0,0,0,0]];
+            GVAR(flashbangPPEffectCC) ppEffectCommit 0.01;
 
-        GVAR(flashbangPPEffectCC) ppEffectEnable true;
-        GVAR(flashbangPPEffectCC) ppEffectAdjust [1, 1, (0.8 + _strength) min 1, _blend, [0,0,0,1], [0,0,0,0]];
-        GVAR(flashbangPPEffectCC) ppEffectCommit 0.01;
+            //PARTIALRECOVERY - start decreasing effect over time
+            [{
+                params ["_strength"];
 
-        //PARTIALRECOVERY - start decreasing effect over time
-        [{
-            params ["_strength"];
+                GVAR(flashbangPPEffectCC) ppEffectAdjust [1,1,0,[1,1,1,0],[0,0,0,1],[0,0,0,0]];
+                GVAR(flashbangPPEffectCC) ppEffectCommit (10 * _strength);
+            }, [_strength], 7 * _strength] call CBA_fnc_waitAndExecute;
 
-            GVAR(flashbangPPEffectCC) ppEffectAdjust [1,1,0,[1,1,1,0],[0,0,0,1],[0,0,0,0]];
-            GVAR(flashbangPPEffectCC) ppEffectCommit (10 * _strength);
-        }, [_strength], 7 * _strength] call CBA_fnc_waitAndExecute;
+            //FULLRECOVERY - end effect
+            [{
+                GVAR(flashbangPPEffectCC) ppEffectEnable false;
+            }, [], 17 * _strength] call CBA_fnc_waitAndExecute;
+        };
 
-        //FULLRECOVERY - end effect
-        [{
-            GVAR(flashbangPPEffectCC) ppEffectEnable false;
-        }, [], 17 * _strength] call CBA_fnc_waitAndExecute;
+        // Make player flinch
+        if (_strength <= 0.2) exitWith {};
+        private _minFlinch = linearConversion [0.2, 1, _strength, 0, 60, true];
+        private _maxFlinch = linearConversion [0.2, 1, _strength, 0, 95, true];
+        private _flinch    = (_minFlinch + random (_maxFlinch - _minFlinch)) * selectRandom [-1, 1];
+        ACE_player setDir (getDir ACE_player + _flinch);
     };
-
-    // Make player flinch
-    if (_strength <= 0.2) exitWith {};
-    private _minFlinch = linearConversion [0.2, 1, _strength, 0, 60, true];
-    private _maxFlinch = linearConversion [0.2, 1, _strength, 0, 95, true];
-    private _flinch    = (_minFlinch + random (_maxFlinch - _minFlinch)) * selectRandom [-1, 1];
-    ACE_player setDir (getDir ACE_player + _flinch);
 };
 true
