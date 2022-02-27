@@ -246,6 +246,74 @@
             <German>Die Wahrscheinlichkeit, dass eine Wunde, die eine Fraktur verursachen würde, tatsächlich zu einer Fraktur führt.</German>
             <Korean>상처를 입을 때 골절에 얼마나 관여할지를 결정합니다.</Korean>
         </Key>
+        
+        <Key ID="STR_ACE_Medical_Airways_DisplayName">
+            <English>Respiratory</English>
+            <Russian>респираторный</Russian>
+            <Japanese>呼吸器</Japanese>
+            <French>Respiratoire</French>
+            <Portuguese>Respiratório</Portuguese>
+            <Chinese>呼吸</Chinese>
+            <Chinesesimp>呼吸</Chinesesimp>
+            <Italian>Respiratorio</Italian>
+            <Czech>Respirační</Czech>
+            <Polish>Oddechowy</Polish>
+            <Spanish>Respiratorio</Spanish>
+            <German>Atmung</German>
+            <Turkish>Solunum</Turkish>
+            <Korean>호흡기</Korean>
+        </Key>
+        <Key ID="STR_ACE_Medical_Fractures_Description">
+            <English>Controls the level of simulation for the Respiratory sysmem</English>
+            <!-- TODO - Airways -->
+            <!-- <Japanese>医療機能で骨折に添え木効果を使うかどうかを決定できます。\n無効化すると、骨折効果は表れません。</Japanese>
+            <Chinese>控制是否讓固定版能夠治療骨折。\n當停用時，受傷時不會導致骨折發生。</Chinese>
+            <Chinesesimp>控制是否让固定板能够治疗骨折。 \n当停用时，受伤时不会导致骨折发生。</Chinesesimp>
+            <French>Permet de définir le niveau d'efficacité des attelles pour le traitement des fractures.\nSi l'option est désactivée, les blessures ne causent pas de fractures.</French>
+            <Italian>Controlla l'effetto dell'utilizzo di stecche per curare le fratture. Quando disabilitato, le lesioni non causano fratture.</Italian>
+            <Czech>Nastavuje efekt dlahy při léčení zlomenin.\nPokud je tato možnost vypnuta, zranění nebudou způsobovat zlomeniny.</Czech>
+            <Polish>Kontroluje efekt użycia szyn do leczenia złamań.\n Po wyłączeniu obrażenia nie powodują złamań.</Polish>
+            <Portuguese>Controla o efeito de uso de talas para tratar fraturas. \nQunado desabilitado, ferimentos não causam fraturas. </Portuguese>
+            <Spanish>Controla el efecto del uso de férulas para tratar fracturas. \n Cuando está desactivado, las lesiones no causan fracturas.</Spanish>
+            <German>Kontrolliert den Effekt wenn Schienen verwendet werden, um Knochenbrüche zu behandeln.\nWenn diese Einstellung nicht aktiviert ist, verursachen Verletzungen keine Knochenbrüche.</German>
+            <Russian>Управляет эффектом использования шин для лечения переломов.\nПри отключении травмы не вызывают переломов.</Russian>
+            <Turkish>Kırıkları tedavi etmek için atel kullanmanın etkisini kontrol eder. \ Devre dışı bırakıldığında, yaralanmalar kırılmaya neden olmaz.</Turkish>
+            <Korean>부목이 골절을 어떻게 치료할지 결정합니다\n비활성화시 골절이 일어나지 않습니다.</Korean> -->
+        </Key>
+        <Key ID="STR_ACE_Medical_Airway_basic">
+            <English>Normal airway management. \n(Blockages, Collapse and Pneumothoraxes)</English>
+            <!-- TODO - Airways -->
+            <!-- <Russian>Шины полностью лечат перелом</Russian>
+            <Japanese>添え木で骨折完治</Japanese>
+            <French>Les attelles guérissent complètement les fractures</French>
+            <Portuguese>Tala cura fraturas completamente</Portuguese>
+            <Chinese>固定板完全治癒骨折</Chinese>
+            <Chinesesimp>固定板完全治愈骨折</Chinesesimp>
+            <Italian>Le gessature curano al massimo le fratture</Italian>
+            <Czech>Dlahy kompletně léčí zlomeniny</Czech>
+            <Polish>Szyny leczą zupełnie złamania</Polish>
+            <Spanish>Férulas sanan completamente las fracturas</Spanish>
+            <German>Schienen heilen Knochenbrüche vollständig</German>
+            <Turkish>Ateller Kırıkları Tamamen İyileştirir</Turkish>
+            <Korean>부목이 골절을 완전히 치료</Korean> -->
+        </Key>
+        <Key ID="STR_ACE_Medical_Fractures_SplintHealsNoSprint">
+            <English>Normal airway management, movement becomes limited when degraded</English>
+            <!-- TODO - Airways -->
+            <!-- <Russian>Шины вылечивают, но не дают бегать</Russian>
+            <Japanese>添え木で治癒可能、走れないように</Japanese>
+            <French>Les attelles guérissent les fractures, mais empêchent de sprinter</French>
+            <Portuguese>Talas curam (mas não consegue correr)</Portuguese>
+            <Chinese>固定版能治癒骨折，但無法奔跑</Chinese>
+            <Chinesesimp>固定板能治愈骨折，但无法奔跑</Chinesesimp>
+            <Italian>Le gessature curano, ma non puoi correre</Italian>
+            <Czech>Dlahy léčí, ale zněmožňují sprintování</Czech>
+            <Polish>Szyny leczą, ale uniemożliwiają sprint</Polish>
+            <Spanish>Las férulas sanan, pero no pueden correr</Spanish>
+            <German>Schienen heilen, aber ermöglichen kein Sprinten</German>
+            <Turkish>Ateller İyileştirir, ancak Koşamaz</Turkish>
+            <Korean>부목이 치료는 하지만 달릴 수는 없음</Korean> -->
+        </Key>
         <Key ID="STR_ACE_Medical_MedicalSettings_enableFor_DisplayName">
             <English>Enabled for</English>
             <Russian>Включено для</Russian>

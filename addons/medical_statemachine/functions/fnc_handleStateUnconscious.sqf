@@ -24,6 +24,18 @@ if (!alive _unit || {!local _unit}) exitWith {};
 
 // Handle spontaneous wake up from unconsciousness
 if (EGVAR(medical,spontaneousWakeUpChance) > 0) then {
+    private _blockage           = GET_AIRWAY_BLOCKED(_unit);
+    private _airwayTreatment    = GET_AIRWAY_TREATMENT_LVL(_unit);
+    if (!_blockage && 
+    {_airwayTreatment < 3} && 
+    { random 1 < BLOCKAGE_CHANCE}) then {
+        [_unit,false] call EFUNC(medical_status,setAirwayBlocked);
+    };
+    if(_blockage  && 
+    {_airwayTreatment < 2} && 
+    { random 1 < COLLAPSE_CHANCE}) then {
+        _unit setVariable [VAR_AIRWAY_COLLAPSED, true, true];
+    };
     if (_unit call EFUNC(medical_status,hasStableVitals)) then {
         private _lastWakeUpCheck = _unit getVariable QEGVAR(medical,lastWakeUpCheck);
 

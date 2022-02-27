@@ -41,12 +41,19 @@ if (EGVAR(medical,fractures) > 0) then {
             [_unit, "forceWalk", QEGVAR(medical,fracture), _hasLegSplint] call EFUNC(common,statusEffect_set);
         };
 
+
         if ((_fractures select 2) == -1) then { _aimFracture = _aimFracture + 2; };
         if ((_fractures select 3) == -1) then { _aimFracture = _aimFracture + 2; };
     };
     _unit setVariable [QGVAR(aimFracture), _aimFracture, false]; // local only var, used in ace_medical's postInit to set ACE_setCustomAimCoef
 };
 
+// Limit player mobility if they have low SpO2
+if (EGVAR(medical,airway) > 1) then {
+    private _spo2Level = GET_SPO2(_unit);
+    [_unit, "blockSprint", QEGVAR(medical,airway), _spo2Level < 95] call EFUNC(common,statusEffect_set);
+    [_unit, "forceWalk", QEGVAR(medical,airway), _spo2Level < 85] call EFUNC(common,statusEffect_set);
+};
 if (!_isLimping && {EGVAR(medical,limping) > 0}) then {
     private _woundsToCheck = GET_OPEN_WOUNDS(_unit);
     if (EGVAR(medical,limping) == 2) then {

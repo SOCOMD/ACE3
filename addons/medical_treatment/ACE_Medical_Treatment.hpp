@@ -552,7 +552,18 @@ class ADDON {
             };
         };
     };
-
+    class AirwayAdjunct {
+        airwayRecoveryLevel = 1;
+        class HeadTilt{
+            airwayRecoveryLevel = 1;
+        };
+        class BasicAirwayy{
+            airwayRecoveryLevel = 2;
+        };
+        class AdvancedAirway{
+            airwayRecoveryLevel = 3;
+        };
+    };
     class Medication {
         // How much does the pain get reduced?
         painReduce = 0;

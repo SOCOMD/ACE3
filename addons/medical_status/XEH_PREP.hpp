@@ -12,6 +12,7 @@ PREP(initUnit);
 PREP(isBeingCarried);
 PREP(isBeingDragged);
 PREP(isInStableCondition);
+PREP(setAirwayBlocked);
 PREP(setCardiacArrestState);
 PREP(setDead);
 PREP(setUnconsciousState);

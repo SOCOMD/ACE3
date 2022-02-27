@@ -234,7 +234,127 @@ class GVAR(actions) {
         allowSelfTreatment = 0;
         callbackSuccess = QFUNC(checkResponse);
     };
-
+    
+    // - Airways --------------------------------------------------------------
+    class ChestSeal: BasicBandage {
+        displayName = "Chest seal";
+        displayNameProgress = "Applying chest seal...";
+        icon = "";
+        category = "airway";
+        treatmentLocations = TREATMENT_LOCATIONS_ALL;
+        allowedSelections[] = {"Body"};
+        allowSelfTreatment = 1;
+        medicRequired = 0;
+        treatmentTime = "5";
+        condition = QFUNC(canChestSeal);
+        callbackSuccess = QFUNC(chestSeal);
+        consumeItem = 1;
+        litter[] = {};
+        items[] = {"ACE_chestSeal"};
+    };
+    
+    class HeadTilt: BasicBandage {
+        displayName = "Head Tilt";
+        displayNameProgress = "Tilting Head...";
+        icon = "";
+        category = "airway";
+        treatmentLocations = TREATMENT_LOCATIONS_ALL;
+        allowedSelections[] = {"Head"};
+        allowSelfTreatment = 1;
+        medicRequired = 0;
+        treatmentTime = "5";
+        condition = QFUNC(canHeadTilt);
+        callbackSuccess = QFUNC(airwayAdjunct);
+        consumeItem = 0;
+        litter[] = {};
+        items[] = {};
+    };
+    
+    class BasicAirway: BasicBandage {
+        displayName = "Basic Airway";
+        displayNameProgress = "Applying Basic Airway...";
+        icon = "";
+        category = "airway";
+        treatmentLocations = TREATMENT_LOCATIONS_ALL;
+        allowedSelections[] = {"Head"};
+        allowSelfTreatment = 0;
+        medicRequired = 0;
+        treatmentTime = "5";
+        condition = QFUNC(canBasicAirway);
+        callbackSuccess = QFUNC(airwayAdjunct);
+        consumeItem = 1;
+        litter[] = {};
+        items[] = {"ACE_basicAirway"};
+    };
+    
+    class AdvancedAirway: BasicBandage {
+        displayName = "Advanced Airway";
+        displayNameProgress = "Applying Advanced Airway...";
+        icon = "";
+        category = "airway";
+        treatmentLocations = TREATMENT_LOCATIONS_ALL;
+        allowedSelections[] = {"Head"};
+        allowSelfTreatment = 0;
+        medicRequired = 0;
+        treatmentTime = "5";
+        condition = QFUNC(canAdvancedAirway);
+        callbackSuccess = QFUNC(airwayAdjunct);
+        consumeItem = 1;
+        litter[] = {};
+        items[] = {"ACE_advancedAirway"};
+    };
+    
+    class PulseOximeterOn: BasicBandage {
+        displayName = "Attach Pulseoximeter";
+        displayNameProgress = "Applying Pulseoximeter...";
+        icon = "";
+        category = "examine";
+        treatmentLocations = TREATMENT_LOCATIONS_ALL;
+        allowedSelections[] = {"Head", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 1;
+        medicRequired = 0;
+        treatmentTime = 1;
+        condition = QUOTE(!([ARR_2(_patient,_bodyPart)] call FUNC(hasPulseOxiAppliedTo)));
+        callbackSuccess = QFUNC(pulseOxi);
+        consumeItem = 1;
+        litter[] = {};
+        items[] = {"ACE_pulseOximeter"};
+    };
+    
+    class PulseOximeterOff: BasicBandage {
+        displayName = "Remove Pulseoximeter";
+        displayNameProgress = "Removing Pulseoximeter...";
+        icon = "";
+        category = "examine";
+        treatmentLocations = TREATMENT_LOCATIONS_ALL;
+        allowedSelections[] = {"Head", "LeftArm", "RightArm", "LeftLeg", "RightLeg"};
+        allowSelfTreatment = 1;
+        medicRequired = 0;
+        treatmentTime = 1;
+        condition = QUOTE(([ARR_2(_patient,_bodyPart)] call FUNC(hasPulseOxiAppliedTo)));
+        callbackSuccess = QFUNC(pulseOxiRemove);
+        consumeItem = 0;
+        litter[] = {};
+        items[] = {};
+    };
+    
+    class ClearDebris: BasicBandage {
+        displayName = "Clear Debris";
+        displayNameProgress = "Clearing debris from airway...";
+        icon = "";
+        category = "airway";
+        treatmentLocations = TREATMENT_LOCATIONS_ALL;
+        allowedSelections[] = {"Head"};
+        allowSelfTreatment = 0;
+        medicRequired = 0;
+        treatmentTime = "5";
+        condition = QFUNC(canClearBlockage);
+        callbackSuccess = QFUNC(clearBlockage);
+        consumeItem = 0;
+        litter[] = {};
+        items[] = {};
+    };
+    
     // - Misc -----------------------------------------------------------------
     class BodyBag: BasicBandage {
         displayName = CSTRING(PlaceInBodyBag);
@@ -271,9 +391,8 @@ class GVAR(actions) {
         animationMedicProne = "AinvPknlMstpSnonWnonDr_medic0";
         animationMedicSelf = "";
         animationMedicSelfProne = "";
-        consumeItem = 0;
         litter[] = {};
-    };
+    };    
     class SurgicalKit: FieldDressing {
         displayName = CSTRING(Use_SurgicalKit);
         displayNameProgress = CSTRING(Stitching);

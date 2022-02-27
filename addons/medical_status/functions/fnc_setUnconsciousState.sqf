@@ -25,6 +25,17 @@ if (_active isEqualTo IS_UNCONSCIOUS(_unit)) exitWith { TRACE_2("no change",_act
 
 _unit setVariable [VAR_UNCON, _active, true];
 
+// handle airways on transition
+if ( random 1 < BLOCKAGE_CHANCE || !_active) then {
+    [_unit,_active] call FUNC(setAirwayBlocked);
+};
+if ( random 1 < COLLAPSE_CHANCE || !_active) then {
+    _unit setVariable [VAR_AIRWAY_COLLAPSED, _active, true];
+};
+if ( !_active) then {
+    _unit setVariable [VAR_AIRWAY_TREATMENT_LVL, 0, true];
+};
+
 // Toggle unit ragdoll state
 [_unit, _active] call EFUNC(medical_engine,setUnconsciousAnim);
 

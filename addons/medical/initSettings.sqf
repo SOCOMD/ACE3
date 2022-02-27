@@ -21,6 +21,17 @@
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(airway),
+    "LIST",
+    [LSTRING(Airways_DisplayName), LSTRING(Airways_Description)],
+    LSTRING(Category),
+    [[0, 1, 2], [ELSTRING(common,Disabled), LSTRING(Airway_basic), LSTRING(Airways_LimitedMovement)], 1],
+    true,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(fractureChance),
     "SLIDER",
     [LSTRING(FractureChance_DisplayName), LSTRING(FractureChance_Description)],

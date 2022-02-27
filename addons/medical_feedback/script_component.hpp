@@ -3,7 +3,7 @@
 #include "\z\ace\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
-// #define DISABLE_COMPILE_CACHE
+#define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_MEDICAL_FEEDBACK
@@ -29,6 +29,8 @@
 
 #define FX_PAIN_FADE_IN   0.3
 #define FX_PAIN_FADE_OUT  0.7
+#define FX_PNEUMO_FADE_IN  0.7
+#define FX_PNEUMO_FADE_OUT  1.5
 #define FX_UNCON_FADE_IN  2.0
 #define FX_UNCON_FADE_OUT 5.0
 
@@ -57,5 +59,6 @@
 #define ICON_BLOODVOLUME_COLOR_RED [0.8, 0.2, 0, 1]
 
 #define ICON_TOURNIQUET_PATH QPATHTOF(data\tourniquet.paa)
+#define ICON_PNEUMO_PATH QPATHTOF(data\pneumo.paa)
 #define ICON_SPLINT_PATH QPATHTOF(data\splint.paa)
 #define ICON_FRACTURE_PATH QPATHTOF(data\fracture.paa)

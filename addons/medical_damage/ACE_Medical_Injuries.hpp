@@ -15,16 +15,19 @@ class ACE_Medical_Injuries {
             bleeding = 0.1;
             pain = 1.0;
             causeLimping = 1;
+            causePneumo = 1;
         };
         // Also called bruises, these are the result of a forceful trauma that injures an internal structure without breaking the skin. Blows to the chest, abdomen, or head with a blunt instrument (e.g. a football or a fist) can cause contusions.
         class Contusion {
             bleeding = 0;
+            causePneumo = 1;
             pain = 0.3;
         };
         // Occur when a heavy object falls onto a person, splitting the skin and shattering or tearing underlying structures.
         class Crush {
             bleeding = 0.05;
             pain = 0.8;
+            causePneumo = 1;
             causeLimping = 1;
             causeFracture = 1;
         };
@@ -42,6 +45,7 @@ class ACE_Medical_Injuries {
         class VelocityWound {
             bleeding = 0.2;
             pain = 0.9;
+            causePneumo = 1;
             causeLimping = 1;
             causeFracture = 1;
         };
@@ -49,6 +53,7 @@ class ACE_Medical_Injuries {
         class PunctureWound {
             bleeding = 0.05;
             pain = 0.4;
+            causePneumo = 1;
             causeLimping = 1;
         };
         // Pain wound that is caused by making or being in contact with heat
@@ -80,7 +85,7 @@ class ACE_Medical_Injuries {
             // bullets only create multiple wounds when the damage is very high
             thresholds[] = {{20, 10}, {4.5, 2}, {3, 1}, {0, 1}};
             selectionSpecific = 1;
-            
+
             class Avulsion {
                 // at damage, weight. between points, weight is interpolated then wound is chosen by weighted random.
                 // as with thresholds, but result is not rounded (decimal values used as-is)
@@ -111,6 +116,7 @@ class ACE_Medical_Injuries {
             // at low damage numbers, chance to create no wounds - makes it a bit more random instead of consistently covering people in bruises
             thresholds[] = {{20, 10}, {10, 5}, {4, 3}, {1.5, 2}, {0.8, 2}, {0.3, 1}, {0, 0}};
             selectionSpecific = 0;
+            
             class Avulsion {
                 weighting[] = {{1.5, 1}, {1.1, 0}};
             };
