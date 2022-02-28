@@ -5,7 +5,7 @@ private _airwayTreatment    = GET_AIRWAY_TREATMENT_LVL(_unit);
 if (!_blockage && 
 {_airwayTreatment < 3} && 
 { random 1 < BLOCKAGE_CHANCE}) then {
-	[_unit,false] call EFUNC(medical_status,setAirwayBlocked);
+	[_unit,true] call FUNC(setAirwayBlocked);
 };
 if(_blockage  && 
 {_airwayTreatment < 2} && 
