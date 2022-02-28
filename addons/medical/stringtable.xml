@@ -246,6 +246,8 @@
             <German>Die Wahrscheinlichkeit, dass eine Wunde, die eine Fraktur verursachen würde, tatsächlich zu einer Fraktur führt.</German>
             <Korean>상처를 입을 때 골절에 얼마나 관여할지를 결정합니다.</Korean>
         </Key>
+        
+        
         <Key ID="STR_ACE_Medical_MedicalSettings_enableFor_DisplayName">
             <English>Enabled for</English>
             <Russian>Включено для</Russian>

@@ -34,8 +34,9 @@ private _classID = 0;
     private _pain = GET_NUMBER(_entry >> "pain",0);
     private _causeLimping = GET_NUMBER(_entry >> "causeLimping",0) == 1;
     private _causeFracture = GET_NUMBER(_entry >> "causeFracture",0) == 1;
+    private _causePneumo = GET_NUMBER(_entry >> "causePneumo",0) == 1;
 
-    private _details = [_selections, _bleeding, _pain, _causeLimping, _causeFracture];
+    private _details = [_selections, _bleeding, _pain, _causeLimping, _causeFracture, _causePneumo];
     GVAR(woundDetails) set [_className, _details];
     GVAR(woundDetails) set [_classID, _details];
     
@@ -114,7 +115,7 @@ TRACE_1("Found default wound handlers", count _defaultWoundHandlers);
         private _woundType = configName _x;
         if (_woundType == "woundHandlers") then {continue};
         if (_woundType in GVAR(woundDetails)) then {
-            private _weighting = GET_ARRAY(_x >> "weighting",ARR_2([[0,1]]));
+            private _weighting = GET_ARRAY(_x >> "weighting",[[ARR_2(0,1)]]);
             private _dmgMulti = GET_NUMBER(_x >> "damageMultiplier", 1);
             private _bleedMulti = GET_NUMBER(_x >> "bleedingMultiplier", 1);
             private _sizeMulti = GET_NUMBER(_x >> "sizeMultiplier", 1);
