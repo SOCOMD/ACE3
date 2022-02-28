@@ -18,7 +18,7 @@
 
 params ["_enable", "_spo2"];
 
-if (!_enable || {_spo2 == 0}) exitWith {
+if (!_enable || _spo2 == 0 ) exitWith {
     if (GVAR(ppPneumothoraxBlackout) != -1) then { GVAR(ppPneumothoraxBlackout) ppEffectEnable false; };
     GVAR(ppPneumothoraxBlur) ppEffectEnable false;
 };
@@ -30,13 +30,13 @@ private _showNextTick = missionNamespace getVariable [QGVAR(showPainNextTick), t
 GVAR(showPainNextTick) = !_showNextTick;
 if (_showNextTick) exitWith {};
 
-private _blurIntensity = linearConversion [80, 100, _spo2, 0.05, 0];
+private _blurIntensity = linearConversion [75, 100, _spo2, 0.4, 0];
 GVAR(ppPneumothoraxBlur) ppEffectAdjust [_blurIntensity];
 GVAR(ppPneumothoraxBlur) ppEffectCommit 0.1;
 
 private _initialAdjust = [];
 private _delayedAdjust = [];
-_spo2     = linearConversion [80, 100, _spo2, 1, 0];
+_spo2     = linearConversion [75, 100, _spo2, 1, 0];
 _initialAdjust = [1, 1, 0, [0, 0, 0, _spo2      ], [0,0,0,1], [0.33, 0.33, 0.33, 0], [0.55, 0.5, 0, 0, 0, 0, 4]];
 _delayedAdjust = [1, 1, 0, [0, 0, 0, _spo2 * 0.9], [0,0,0,1], [0.33, 0.33, 0.33, 0], [0.55, 0.5, 0, 0, 0, 0, 4]];
 

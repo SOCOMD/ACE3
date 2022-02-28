@@ -46,10 +46,10 @@
 
 // --- Airway
 #define DEFAULT_SPO2 100
-#define PNEUMO_DAMAGE_THRESHOLD 0.5
-#define PNEUMO_CHANCE 0.5
-#define COLLAPSE_CHANCE 0.5
-#define BLOCKAGE_CHANCE 0.5
+#define PNEUMO_DAMAGE_THRESHOLD EGVAR(medical,pneumoDamageThreshold)
+#define PNEUMO_CHANCE EGVAR(medical,pneumoChance)
+#define COLLAPSE_CHANCE EGVAR(medical,collapsedChance)
+#define BLOCKAGE_CHANCE EGVAR(medical,blockageChance)
 
 // --- blood
 // 0.077 l/kg * 80kg = 6.16l

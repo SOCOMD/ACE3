@@ -28,6 +28,6 @@ if ([_patient, _bodyPart] call FUNC(hasPulseOxiAppliedTo)) exitWith {
 };
 
 [_patient, _usedItem] call FUNC(addToTriageCard);
-[_patient, "activity", "Pulseoximeter applied", [[_medic, false, true] call EFUNC(common,getName)]] call FUNC(addToLog);
+[_patient, "activity", "Pulse Oximeter applied", [[_medic, false, true] call EFUNC(common,getName)]] call FUNC(addToLog);
 
 [QGVAR(pulseOxiLocal), [_patient, _bodyPart], _patient] call CBA_fnc_targetEvent;

@@ -1,5 +1,6 @@
 PREP(addMedicationAdjustment);
 PREP(adjustPainLevel);
+PREP(airwayDegrading);
 PREP(getBloodLoss);
 PREP(getBloodPressure);
 PREP(getBloodVolumeChange);

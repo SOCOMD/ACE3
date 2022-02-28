@@ -23,3 +23,4 @@ IS_UNCONSCIOUS(_patient) && {
 }&&{
 	GET_AIRWAY_TREATMENT_LVL(_patient)  < 2
 }
+&& {isNull (_patient getVariable [QEGVAR(medical,air_provider), objNull])}

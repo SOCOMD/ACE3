@@ -19,7 +19,6 @@
 
 params ["_medic", "_patient","_classname"];
 TRACE_2("chestSealLocal",_medic,_patient);
-systemChat str _classname;
 
 private _defaultConfig = configFile >> QUOTE(ADDON) >> "AirwayAdjunct";
 private _adjunctConfig = _defaultConfig >> _classname;

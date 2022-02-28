@@ -20,7 +20,6 @@
 params ["_unit", "_allDamages", "_typeOfDamage"];
 TRACE_3("woundsHandlerBase",_unit,_allDamages,_typeOfDamage);
 
-systemChat "test";
 if !(_typeOfDamage in GVAR(damageTypeDetails)) then {
     WARNING_1("damage type not found",_typeOfDamage);
     _typeOfDamage = "unknown";
@@ -150,7 +149,7 @@ private _bodyPartVisParams = [_unit, false, false, false, false]; // params arra
                 && {EGVAR(medical,airway) > 0}
                 && {_bodyPartNToAdd == 1}
                 && {_woundDamage > PNEUMO_DAMAGE_THRESHOLD}
-                && {random 1 < PNEUMO_CHANCE} // TODO - Airways - make these values
+                && {random 1 < EGVAR(medical,pneumoChance)} // TODO - Airways - make these values
             ): {
                 _unit setVariable [VAR_PNEUMO, true, true];
 

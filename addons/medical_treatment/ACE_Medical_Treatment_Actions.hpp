@@ -265,6 +265,7 @@ class GVAR(actions) {
         treatmentTime = "5";
         condition = QFUNC(canHeadTilt);
         callbackSuccess = QFUNC(airwayAdjunct);
+        callbackProgress = QFUNC(airwayAdjunctProgress);
         consumeItem = 0;
         litter[] = {};
         items[] = {};
@@ -282,6 +283,7 @@ class GVAR(actions) {
         treatmentTime = "5";
         condition = QFUNC(canBasicAirway);
         callbackSuccess = QFUNC(airwayAdjunct);
+        callbackProgress = QFUNC(airwayAdjunctProgress);
         consumeItem = 1;
         litter[] = {};
         items[] = {"ACE_basicAirway"};
@@ -299,14 +301,15 @@ class GVAR(actions) {
         treatmentTime = "5";
         condition = QFUNC(canAdvancedAirway);
         callbackSuccess = QFUNC(airwayAdjunct);
+        callbackProgress = QFUNC(airwayAdjunctProgress);
         consumeItem = 1;
         litter[] = {};
         items[] = {"ACE_advancedAirway"};
     };
     
     class PulseOximeterOn: BasicBandage {
-        displayName = "Attach Pulseoximeter";
-        displayNameProgress = "Applying Pulseoximeter...";
+        displayName = "Attach Pulse Oximeter";
+        displayNameProgress = "Applying Pulse Oximeter...";
         icon = "";
         category = "examine";
         treatmentLocations = TREATMENT_LOCATIONS_ALL;
@@ -322,8 +325,8 @@ class GVAR(actions) {
     };
     
     class PulseOximeterOff: BasicBandage {
-        displayName = "Remove Pulseoximeter";
-        displayNameProgress = "Removing Pulseoximeter...";
+        displayName = "Remove Pulse Oximeter";
+        displayNameProgress = "Removing Pulse Oximeter...";
         icon = "";
         category = "examine";
         treatmentLocations = TREATMENT_LOCATIONS_ALL;
@@ -354,6 +357,53 @@ class GVAR(actions) {
         litter[] = {};
         items[] = {};
     };
+    
+    class BVM: BasicBandage {
+        displayName = "Pocket BVM";
+        displayNameProgress = "Using Bag Valve Mask";
+        icon = "";
+        category = "airway";
+        treatmentLocations = TREATMENT_LOCATIONS_ALL;
+        allowedSelections[] = {"Head"};
+        allowSelfTreatment = 0;
+        medicRequired = 0;
+        treatmentTime = 8;
+        consumeItem = 0;
+        items[] = {"ACE_pocketBVM"};
+        condition = QFUNC(canBVM);
+        callbackSuccess = QFUNC(bvmSuccess);
+        callbackFailure = QFUNC(bvmFailure);
+        callbackProgress = QFUNC(bvmProgress);
+        callbackStart = QFUNC(bvmStart);
+        animationMedic = "AinvPknlMstpSnonWnonDr_medic0";
+        animationMedicProne = "AinvPknlMstpSnonWnonDr_medic0";
+        animationMedicSelf = "";
+        animationMedicSelfProne = "";
+        litter[] = {};
+    };  
+    
+    class mouthToMouth: BasicBandage {
+        displayName = "Mouth To Mouth Braething";
+        displayNameProgress = "Providing mouth to mouth";
+        icon = "";
+        category = "airway";
+        treatmentLocations = TREATMENT_LOCATIONS_ALL;
+        allowedSelections[] = {"Head"};
+        allowSelfTreatment = 0;
+        medicRequired = 0;
+        treatmentTime = 8;
+        items[] = {};
+        condition = QFUNC(canBVM);
+        callbackSuccess = QFUNC(bvmSuccess);
+        callbackFailure = QFUNC(bvmFailure);
+        callbackProgress = QFUNC(bvmProgress);
+        callbackStart = QFUNC(bvmStart);
+        animationMedic = "AinvPknlMstpSnonWnonDr_medic0";
+        animationMedicProne = "AinvPknlMstpSnonWnonDr_medic0";
+        animationMedicSelf = "";
+        animationMedicSelfProne = "";
+        litter[] = {};
+    };  
     
     // - Misc -----------------------------------------------------------------
     class BodyBag: BasicBandage {

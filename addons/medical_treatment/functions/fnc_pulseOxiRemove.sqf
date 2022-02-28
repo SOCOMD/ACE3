@@ -33,7 +33,7 @@ _pulseOxis set [_partIndex, 0];
 _patient setVariable [VAR_PULSE_OXI, _pulseOxis, true];
 
 private _nearPlayers = (_patient nearEntities ["CAManBase", 6]) select {_x call EFUNC(common,isPlayer)};
-[_patient, "activity", "Pulseoximeter removed", [[_medic, false, true] call EFUNC(common,getName)]] call FUNC(addToLog);
+[_patient, "activity", "Pulse Oximeter removed", [[_medic, false, true] call EFUNC(common,getName)]] call FUNC(addToLog);
 TRACE_1("clearConditionCaches: pulseOxiRemove",_nearPlayers);
 [QEGVAR(interact_menu,clearConditionCaches), [], _nearPlayers] call CBA_fnc_targetEvent;
 

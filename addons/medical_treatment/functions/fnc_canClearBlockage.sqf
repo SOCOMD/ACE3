@@ -19,3 +19,4 @@
 params ["", "_patient"];
 
 IS_UNCONSCIOUS(_patient) && {GET_AIRWAY_BLOCKED(_patient)}
+&& {isNull (_patient getVariable [QEGVAR(medical,air_provider), objNull])}

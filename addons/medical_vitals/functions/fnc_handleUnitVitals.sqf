@@ -135,29 +135,39 @@ if (EGVAR(medical,airway) > 0) then {
     private _collapsed = GET_AIRWAY_COLLAPSED(_unit);
     private _pneumo = GET_PNEUMO(_unit);
     private _inCrdc = IN_CRDC_ARRST(_unit);
+    private _maximumDrop = (EGVAR(medical,pneumoMultiplier) + EGVAR(medical,collapsedMultiplier) + EGVAR(medical,blockageMultiplier));
     private _receivingAir = alive (_unit getVariable [QEGVAR(medical,air_provider), objNull]);
-    private _airSupliment = alive (_unit getVariable [QEGVAR(medical,air_supliment), objNull] );// TODO - Airways - implements a bag valve mask/mouth to mouth
-    if(_blocked || _collapsed || _pneumo || {_heartRate  == 0}) then {
-        // can only go down 
-        private _blockedAdjustment = [0, 1] select _blocked;
-        private _collapsedAdjustment = [0, 1] select _collapsed;
-        private _pneumoAdjustment = [0, 1] select _pneumo;
-        private _degredationSum = _pneumoAdjustment + _collapsedAdjustment +_blockedAdjustment;
-        private _degredationSum = [_degredationSum , 2] select (_inCrdc); // if no HR, then it's essentially the maximum at which SpO2 could be falling
-        // airways need to go down at a maximum of 0.5 spo2 per second
-        private _decreaseValue = linearConversion [0, 3 ,_degredationSum, 0, 0.3, true];
-
-        // Heart working harder 
-
-        _spo2 = _spo2 - _decreaseValue;
-        _unit setVariable [VAR_SPO2, (_spo2 max 65), true];
+    private _airSupliment = _unit getVariable [QEGVAR(medical,air_supliment), 0];// TODO - Airways - implements a bag valve mask/mouth to mouth
+    if(_blocked || _collapsed || _pneumo || _inCrdc) then {
+        
+        private _newSpo2 = _spo2;
+        private _adjustment = 0;
+        if(_inCrdc) then {
+            _adjustment = [-0.3 , _airSupliment] select (_receivingAir);
+            _multiplier = [EGVAR(medical,airwayDegradationMultiplier), EGVAR(medical,airwayRecoveryMultiplier)] select (_receivingAir);
+            _adjustment = _adjustment * _multiplier;            
+        } else {
+            private _blockedAdjustment = [0, 1] select _blocked;
+            private _collapsedAdjustment = [0, 1] select _collapsed;
+            private _pneumoAdjustment = [0, 1] select _pneumo;
+            private _degredationSum = (_pneumoAdjustment * EGVAR(medical,pneumoMultiplier)) + (_collapsedAdjustment * EGVAR(medical,collapsedMultiplier)) + (_blockedAdjustment * EGVAR(medical,blockageMultiplier));
+            _adjustment = linearConversion [0, _maximumDrop ,_degredationSum, 0, 0.3, true];
+            _adjustment =  _adjustment * -EGVAR(medical,airwayDegradationMultiplier);
+        };
+        _newSpo2 = ((_spo2 + _adjustment)  max 65) min 100;
+        if((_spo2 > 95 &&  _newSpo2 < 95) || {_spo2 > 85 &&  _newSpo2 < 85} || {_newSpo2 > 95 &&  _spo2 < 95} || {_newSpo2 > 85 &&  _spo2 < 85}) then {
+            _updateDamageEffects = true;
+        };
+        _unit setVariable [VAR_SPO2, _newSpo2 , true];
     } else {
        // nothing impairing breathing
-        if(_spo2 < 100 && { !_inCrdc || _receivingAir }) then {
-            private _increaseValue = [2, _airSupliment] select _receivingAir; // TODO - Airways - implements a bag valve mask/mouth to mouth
-            _spo2 = _spo2 + _increaseValue;
-            _spo2 = _spo2 min 100;
-            _unit setVariable [VAR_SPO2,_spo2, true];
+        if(_spo2 < 100 &&  !_inCrdc ) then {
+            private _increaseValue = 2 * EGVAR(medical,airwayRecoveryMultiplier);
+            private _newSpo2 = (_spo2 + _increaseValue ) min 100;
+            if((_newSpo2 > 95 &&  _spo2 < 95) || {_newSpo2 > 85 &&  _spo2 < 85}) then {
+                _updateDamageEffects = true;
+            };
+            _unit setVariable [VAR_SPO2,_newSpo2, true];
         };
     };
 };
@@ -199,11 +209,12 @@ switch (true) do {
             [QEGVAR(medical,CriticalVitals), _unit] call CBA_fnc_localEvent;
         };
     };
-    case(_spo2 < 81) : { 
-        if(_spo2 < 65) then {
-            systemChat "uh oh, this ain't good";
+    case(_spo2 <= 75) : { 
+        if(_spo2 <= 65) then {
+            TRACE_2("Oxygen critical. Cardiac arrest",_unit,_spo2);
             [QEGVAR(medical,FatalVitals), _unit] call CBA_fnc_localEvent;
         } else {           
+            TRACE_2("Oxygen critical. Critical vitals",_unit,_spo2);
             [QEGVAR(medical,CriticalVitals), _unit] call CBA_fnc_localEvent;
         };
     };
