@@ -22,9 +22,12 @@ if (!alive _unit) exitWith {};
 if (!local _unit) exitWith {};
 
 [_unit] call EFUNC(medical_vitals,handleUnitVitals);
-[_unit] call EFUNC(medical_status,airwayDegrading);
 
 private _timeDiff = CBA_missionTime - (_unit getVariable [QGVAR(cardiacArrestTimeLastUpdate), 0]);
+
+if (_timeDiff >= 10) then {
+    [_unit] call EFUNC(medical_status,airwayDegrading);
+};
 if (_timeDiff >= 1) then {
     _timeDiff = _timeDiff min 10;
     _unit setVariable [QGVAR(cardiacArrestTimeLastUpdate), CBA_missionTime];
