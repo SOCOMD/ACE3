@@ -149,12 +149,12 @@ private _bodyPartVisParams = [_unit, false, false, false, false]; // params arra
                 && {EGVAR(medical,airway) > 0}
                 && {_bodyPartNToAdd == 1}
                 && {_woundDamage > PNEUMO_DAMAGE_THRESHOLD}
-                && {random 1 < EGVAR(medical,pneumoChance)} // TODO - Airways - make these values
+                && {random 1 < EGVAR(medical,pneumoChance)} 
             ): {
                 _unit setVariable [VAR_PNEUMO, true, true];
 
                 [QEGVAR(medical,pneumo), [_unit]] call CBA_fnc_localEvent;
-                TRACE_1("Pneumothorax",_bodyPartNToAdd);
+                TRACE_1("Pneumothorax",_unit);
 
                 _updateDamageEffects = true;
             };

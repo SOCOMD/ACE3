@@ -82,11 +82,3 @@
     true
 ] call CBA_fnc_addSetting;
 
-[
-    QEGVAR(medical,medicPneumo),
-    "LIST",
-    [LSTRING(MedicPneumo_DisplayName), LSTRING(MedicPneumo_Description)],
-    [ELSTRING(medical,Category), LSTRING(SubCategory_Airways)],
-    [[0, 1, 2], [ELSTRING(medical_treatment,Anyone), ELSTRING(medical_treatment,Medics), ELSTRING(medical_treatment,Doctors)], 1],
-    true
-] call CBA_fnc_addSetting;

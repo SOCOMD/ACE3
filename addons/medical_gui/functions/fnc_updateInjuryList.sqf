@@ -38,22 +38,24 @@ if (IS_BLEEDING(_target)) then {
     _entries pushBack [localize LSTRING(Status_Bleeding), [1, 0, 0, 1]];
 };
 
-// Give a qualitative description of the blood volume lost
-switch (GET_HEMORRHAGE(_target)) do {
-    case 1: {
-        _entries pushBack [localize LSTRING(Lost_Blood1), [1, 1, 0, 1]];
-    };
-    case 2: {
-        _entries pushBack [localize LSTRING(Lost_Blood2), [1, 0.67, 0, 1]];
-    };
-    case 3: {
-        _entries pushBack [localize LSTRING(Lost_Blood3), [1, 0.33, 0, 1]];
-    };
-    case 4: {
-        _entries pushBack [localize LSTRING(Lost_Blood4), [1, 0, 0, 1]];
+if (GVAR(showBloodlossEntry)) then {
+    // Give a qualitative description of the blood volume lost
+    switch (GET_HEMORRHAGE(_target)) do {
+        case 1: {
+            _entries pushBack [localize LSTRING(Lost_Blood1), [1, 1, 0, 1]];
+        };
+        case 2: {
+            _entries pushBack [localize LSTRING(Lost_Blood2), [1, 0.67, 0, 1]];
+        };
+        case 3: {
+            _entries pushBack [localize LSTRING(Lost_Blood3), [1, 0.33, 0, 1]];
+        };
+        case 4: {
+            _entries pushBack [localize LSTRING(Lost_Blood4), [1, 0, 0, 1]];
+        };
     };
 };
-// TODO - Airways - wrap this for when a pulse-oxi is on patient
+
 if(HAS_PULSE_OXI_APPLIED_ON(_target,_selectionN)) then {
     private _spo2 = GET_SPO2(_target);
     private _hr = GET_HEART_RATE(_target);
