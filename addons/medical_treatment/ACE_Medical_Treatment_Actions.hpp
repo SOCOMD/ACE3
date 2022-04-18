@@ -383,7 +383,7 @@ class GVAR(actions) {
     };  
     
     class mouthToMouth: BasicBandage {
-        displayName = "Mouth To Mouth Braething";
+        displayName = "Mouth To Mouth Breathing";
         displayNameProgress = "Providing mouth to mouth";
         icon = "";
         category = "airway";

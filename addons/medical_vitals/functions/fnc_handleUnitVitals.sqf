@@ -131,7 +131,7 @@ _bloodPressure params ["_bloodPressureL", "_bloodPressureH"];
 
 private _spo2 = GET_SPO2(_unit);
 if (EGVAR(medical,airway) > 0) then {
-    [_unit, _spo2, _deltaT, _syncValues] call FUNC(handleUnitAirways);
+    _spo2 = [_unit, _spo2, _deltaT, _syncValues] call FUNC(handleUnitAirways);
 };
 // Statements are ordered by most lethal first.
 switch (true) do {
