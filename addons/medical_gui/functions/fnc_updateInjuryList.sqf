@@ -55,7 +55,7 @@ if (GVAR(showBloodlossEntry)) then {
         };
     };
 };
-// TODO - Airways - wrap this for when a pulse-oxi is on patient
+
 if(HAS_PULSE_OXI_APPLIED_ON(_target,_selectionN)) then {
     private _spo2 = GET_SPO2(_target);
     private _hr = GET_HEART_RATE(_target);
