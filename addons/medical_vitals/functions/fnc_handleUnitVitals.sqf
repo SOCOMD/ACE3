@@ -171,14 +171,9 @@ switch (true) do {
             [QEGVAR(medical,CriticalVitals), _unit] call CBA_fnc_localEvent;
         };
     };
-    case(_spo2 <= 75) : { 
-        if(_spo2 <= 65) then {
-            TRACE_2("Oxygen critical. Cardiac arrest",_unit,_spo2);
-            [QEGVAR(medical,FatalVitals), _unit] call CBA_fnc_localEvent;
-        } else {           
-            TRACE_2("Oxygen critical. Critical vitals",_unit,_spo2);
-            [QEGVAR(medical,CriticalVitals), _unit] call CBA_fnc_localEvent;
-        };
+    case(_spo2 <= 70) : { 
+        TRACE_2("Oxygen critical. Critical vitals",_unit,_spo2);
+        [QEGVAR(medical,CriticalVitals), _unit] call CBA_fnc_localEvent;
     };
     case (_woundBloodLoss > BLOOD_LOSS_KNOCK_OUT_THRESHOLD): {
         [QEGVAR(medical,CriticalVitals), _unit] call CBA_fnc_localEvent;

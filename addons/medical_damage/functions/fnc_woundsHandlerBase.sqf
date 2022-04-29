@@ -170,22 +170,42 @@ private _bodyPartVisParams = [_unit, false, false, false, false]; // params arra
 
         // if possible merge into existing wounds
         private _createNewWound = true;
+        private _woundCounts = [0,0,0,0,0,0];
+        private _woundsToRemove = [0,0,0,0,0,0];
+        {
+            _x params ["_classID", "_bodyPartN", "_oldAmountOf"];
+            private _currentWoundCount = ((_woundCounts select _bodyPartN) + _oldAmountOf);
+            _woundCounts set [_bodyPartN, _currentWoundCount];
+        } forEach _openWounds;
+        // modify same size wounds under limit
         {
             _x params ["_classID", "_bodyPartN", "_oldAmountOf", "_oldBleeding", "_oldDamage"];
+            private _woundcount = (_woundCounts select _bodyPartN);
             if (
-                    (_classComplex == _classID) &&
-                    {_bodyPartNToAdd == _bodyPartN} &&
-                    {(_bodyPartNToAdd != 1) || {(_woundDamage < PENETRATION_THRESHOLD) isEqualTo (_oldDamage < PENETRATION_THRESHOLD)}} && // penetrating body damage is handled differently
-                    {(_bodyPartNToAdd > 3) || {!_causeLimping} || {(_woundDamage <= LIMPING_DAMAGE_THRESHOLD) isEqualTo (_oldDamage <= LIMPING_DAMAGE_THRESHOLD)}} // ensure limping damage is stacked correctly
-                    ) exitWith {
-                TRACE_2("merging with existing wound",_injury,_x);
-                private _newAmountOf = _oldAmountOf + 1;
-                _x set [2, _newAmountOf];
-                private _newBleeding = (_oldAmountOf * _oldBleeding + _bleeding) / _newAmountOf;
-                _x set [3, _newBleeding];
-                private _newDamage = (_oldAmountOf * _oldDamage + _woundDamage) / _newAmountOf;
-                _x set [4, _newDamage];
-                _createNewWound = false;
+                (_bodyPartNToAdd == _bodyPartN) &&
+                {(_bodyPartNToAdd != 1) || {(_woundDamage < PENETRATION_THRESHOLD) isEqualTo (_oldDamage < PENETRATION_THRESHOLD)}} && // penetrating body damage is handled differently
+                {(_bodyPartNToAdd > 3) || {!_causeLimping} || {(_woundDamage <= LIMPING_DAMAGE_THRESHOLD) isEqualTo (_oldDamage <= LIMPING_DAMAGE_THRESHOLD)}} // ensure limping damage is stacked correctly
+                ) then {
+                if ((_classComplex == _classID) && {_woundcount < 7}) exitWith {
+                    TRACE_2("merging with existing wound",_injury,_x);
+                    private _newAmountOf = _oldAmountOf + 1;
+                    _x set [2, _newAmountOf];
+                    private _newBleeding = (_oldAmountOf * _oldBleeding + _bleeding) / _newAmountOf;
+                    _x set [3, _newBleeding];
+                    private _newDamage = (_oldAmountOf * _oldDamage + _woundDamage) / _newAmountOf;
+                    _x set [4, _newDamage];
+                    _createNewWound = false;
+                };
+                if (_woundcount >= 7) exitWith {
+                    TRACE_2("merging with existing wound",_injury,_x);
+                    _x set [0, ((_classID + 1) min 2)];
+                    private _newAmountOf = _oldAmountOf + 1;
+                    private _newBleeding = (_oldAmountOf * _oldBleeding + _bleeding) / _newAmountOf;
+                    _x set [3, _newBleeding];
+                    private _newDamage = (_oldAmountOf * _oldDamage + _woundDamage) / _newAmountOf;
+                    _x set [4, _newDamage];
+                    _createNewWound = false;
+                };
             };
         } forEach _openWounds;
 

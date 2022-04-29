@@ -58,7 +58,7 @@ if(_blocked || _collapsed || _pneumo || _inCrdc) then {
         };
     };
 };
-_unit setVariable [VAR_SPO2, _newSpo2 , _syncValue];
+_unit setVariable [VAR_SPO2, _newSpo2 , true];
 if (_updateDamageEffects) then {
     [_unit] call EFUNC(medical_engine,updateDamageEffects);
 };
