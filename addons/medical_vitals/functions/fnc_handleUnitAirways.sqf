@@ -20,6 +20,10 @@
  
 params ["_unit", "_spo2", "_deltaT", "_syncValue"];
 
+if (_spo2 < 100 ) then {
+    _syncValue = true;
+};
+
 private _newSpo2 = _spo2;
 private _adjustment = 0;
 private _updateDamageEffects = false;
@@ -58,7 +62,7 @@ if(_blocked || _collapsed || _pneumo || _inCrdc) then {
         };
     };
 };
-_unit setVariable [VAR_SPO2, _newSpo2 , true];
+_unit setVariable [VAR_SPO2, _newSpo2 , _syncValue];
 if (_updateDamageEffects) then {
     [_unit] call EFUNC(medical_engine,updateDamageEffects);
 };
