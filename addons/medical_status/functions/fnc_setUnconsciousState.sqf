@@ -45,6 +45,9 @@ if ( !_active) then {
 // Block radio on unconsciousness for compatibility with captive module
 [_unit, "blockRadio", "ace_unconscious", _active] call EFUNC(common,statusEffect_set);
 
+// Block speaking on unconsciousness
+[_unit, "blockSpeaking", "ace_unconscious", _active] call EFUNC(common,statusEffect_set);
+
 if (_active) then {
     // Don't bother setting this if not used
     if (EGVAR(medical,spontaneousWakeUpChance) > 0) then {
