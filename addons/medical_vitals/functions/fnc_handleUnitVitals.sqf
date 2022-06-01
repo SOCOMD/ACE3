@@ -131,7 +131,7 @@ _bloodPressure params ["_bloodPressureL", "_bloodPressureH"];
 
 private _spo2 = GET_SPO2(_unit);
 if (EGVAR(medical,airway) > 0) then {
-    _spo2 = [_unit, _spo2, _deltaT, _syncValues] call FUNC(handleUnitAirways);
+    _spo2 = [_unit, _spo2, _deltaT, _syncValues] call FUNC(updateUnitAirways);
 };
 // Statements are ordered by most lethal first.
 switch (true) do {
@@ -172,9 +172,9 @@ switch (true) do {
         };
     };
     case(_spo2 <= 80) : { 
-        if (_spo2 <= 70) then { 
+        if (_spo2 <= 65) then { 
         TRACE_2("Oxygen critical. Critical vitals",_unit,_spo2);
-        [QEGVAR(medical,CriticalVitals), _unit] call CBA_fnc_localEvent;
+        [QEGVAR(medical,FatalVitals), _unit] call CBA_fnc_localEvent;
         } else {
             TRACE_2("Oxygen critical. Critical vitals",_unit,_spo2);
             [QEGVAR(medical,CriticalVitals), _unit] call CBA_fnc_localEvent;

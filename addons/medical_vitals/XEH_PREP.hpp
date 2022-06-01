@@ -1,5 +1,5 @@
 PREP(handleUnitVitals);
-PREP(handleUnitAirways);
 PREP(updateHeartRate);
+PREP(updateUnitAirways);
 PREP(updatePainSuppress);
 PREP(updatePeripheralResistance);

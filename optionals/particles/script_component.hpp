@@ -24,7 +24,7 @@
 
 #define EFFECT_HANDGRENADE(color) class SmokeShell##color##Effect: SmokeShellWhiteEffect { \
     class SmokeShell: SmokeShell { \
-        type = "ACE_SmokeBaseMedium"; \
+        type = "ACE_SmokeBaseSmall"; \
     }; \
 }
 #define MERGE(var1,var2) var1####var2

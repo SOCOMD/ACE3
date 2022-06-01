@@ -1,7 +1,7 @@
 // - Smoke hand grenades ------------------------------------------------------
 class SmokeShellWhiteEffect {
     class SmokeShell {
-        type = "ACE_SmokeBaseLarge";
+        type = "ACE_SmokeBaseSmall";
     };
     class SmokeShell2 {
         type = "ACE_SmokeBaseSmall";
